@@ -16,19 +16,11 @@ A brief description of what this project does, who it's for, and why it exists.
 ### Installation Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/Hung-nd233960/Group-9---Microprocessors
    ```
 2. Navigate to the project directory:
    ```sh
-   cd your-repo
-   ```
-3. Install dependencies:
-   ```sh
-   [command to install dependencies]
-   ```
-4. Run the project:
-   ```sh
-   [command to start project]
+   cd Group-9---Microprocessors
    ```
 
 ## 📖 Usage
@@ -46,8 +38,6 @@ We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for
 - `develop` – Latest development changes.
 - Feature branches: `feature/your-feature-name`
 
-## 📄 License
-This project is licensed under [LICENSE_NAME]. See [LICENSE](LICENSE) for details.
 
 ## 🙌 Acknowledgments
 - Contributors
