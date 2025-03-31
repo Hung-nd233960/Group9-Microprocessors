@@ -69,5 +69,3 @@ This document outlines the overall work required to develop **OxyRem**, a wearab
 - If time allows, explore:
   - **GPS Tracking & Fall Detection**
   - **Battery efficiency optimizations**
-
-
