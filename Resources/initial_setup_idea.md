@@ -68,6 +68,29 @@ For remote monitoring, the server integrates with the **Telegram API**:
 - **Physical button presses and close-proximity pairing** protect against remote attacks.
 - In the event of failure, hardware access is required for diagnostics, preventing remote exploitation.
 
+## **7. Assessment and Review**
+
+### **Why This Approach Was Chosen**
+
+This approach was selected to balance **security, ease of use, and hardware constraints**:
+
+- **Security**: Ensuring data integrity and preventing spoofing was a priority, leading to the use of cryptographic key pairs and challenge-response authentication.
+- **Ease of Use**: Physical button pairing and QR code verification provide a user-friendly experience while maintaining security.
+- **Hardware Constraints**: The ESP32 platform has limited computational resources, so encryption and web-hosting were optimized to ensure smooth performance.
+
+### **Alternative Approaches Considered and Discarded**
+
+1. **Fully Open Wi-Fi Setup Mode**
+   - **Reason Discarded**: A completely open Wi-Fi network during setup would introduce a security risk, allowing unauthorized users to access the server.
+2. **NFC-Only Pairing**
+   - **Reason Discarded**: While NFC is secure and convenient, requiring additional NFC hardware on both server and client was deemed unnecessary given that BLE can fulfill the same function.
+3. **Static IP Address Assignment**
+   - **Reason Discarded**: Manually assigning static IPs is complex for end users, and dynamically discovering the server’s local IP via a pairing mechanism is a more flexible solution.
+4. **Cloud-Based Server for Data Storage**
+   - **Reason Discarded**: Storing data on a cloud server would introduce privacy concerns and external dependencies, whereas a local SD card keeps data contained and secure.
+5. **Full TLS Encryption for Local Communication**
+   - **Reason Discarded**: While TLS is highly secure, it introduces computational overhead on ESP32 hardware. AES-256 encryption with pre-shared keys provides a practical alternative.
+
 ## **Conclusion**
 
-This architecture ensures a robust, secure, and user-friendly connection between SpO₂ monitoring clients and the central server. The combination of **proximity-based pairing, cryptographic authentication, and encrypted communication** mitigates security risks while maintaining ease of use for end-users.
+This architecture ensures a robust, secure, and user-friendly connection between SpO₂ monitoring clients and the central server. The combination of **proximity-based pairing, cryptographic authentication, and encrypted communication** mitigates security risks while maintaining ease of use for end-users. The design choices made prioritize practical security within the constraints of embedded systems, ensuring a reliable and efficient solution.
