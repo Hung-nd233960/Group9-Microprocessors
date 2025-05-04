@@ -1,6 +1,6 @@
 # Kỹ thuật hàn 
 
-## Update lần 1 
+## Update lần 2 
 
 ## Vật dụng cần chuẩn bị 
 - Mỡ hàn (dùng loại chứa nhựa thông thì tốt) (vừa để rửa mỏ hàn bằng cách nhúng mỏ hàn vào hộp mỡ)
@@ -42,6 +42,89 @@
 - Nên làm trong môi trường không có quạt , điều hòa 
 - Tay cầm máy hàn và cầm thiếc phải chắc , nếu không thiếc sẽ chảy hết ra ngoài hoặc chảy không đúng chỗ 
 
+## Các lỗi thường gặp khi hàn và cách khắc phục
+
+### 1. Mối hàn không dính
+- **Nguyên nhân:**
+  - Bề mặt kim loại bị gỉ, bẩn, có dầu mỡ.
+  - Không bôi mỡ hàn hoặc thiếc kém chất lượng.
+  - Mỏ hàn không đủ nóng.
+- **Cách khắc phục:**
+  - Cạo sạch gỉ, lau sạch bằng cồn.
+  - Bôi một lớp mỡ hàn trước khi hàn.
+  - Đảm bảo mỏ hàn đạt đủ nhiệt độ (>300°C).
+
+---
+
+### 2. Mối hàn nhọn như kim (Cold Joint)
+- **Nguyên nhân:**
+  - Di chuyển tay quá nhanh, thiếc chưa kịp chảy đều.
+  - Hàn khi mỏ chưa đủ nhiệt hoặc vật chưa đủ nóng.
+- **Cách khắc phục:**
+  - Giữ mỏ hàn lâu hơn vài giây.
+  - Đảm bảo thiếc đủ chảy, lan đều ra chân linh kiện và đế.
+
+---
+
+### 3. Mối hàn quá to, phình ra
+- **Nguyên nhân:**
+  - Dùng quá nhiều thiếc.
+  - Đưa dây thiếc vào liên tục không kiểm soát.
+- **Cách khắc phục:**
+  - Chỉ cần một lượng thiếc vừa đủ để bao kín mối nối.
+  - Dùng máy hút thiếc hoặc dây hút thiếc để làm lại.
+
+---
+
+### 4. Hàn dính nhiều chân linh kiện (nối tắt chân IC)
+- **Nguyên nhân:**
+  - Mỏ hàn đầu to hoặc không kiểm soát được lượng thiếc.
+  - Không có kỹ thuật di mỏ hàn chính xác.
+- **Cách khắc phục:**
+  - Dùng máy hút thiếc hoặc dây hút thiếc để tách chân.
+  - Hàn lại từng chân một, có thể dùng băng keo cách ly tạm thời.
+
+---
+
+### 5. Mạch hàn xong không hoạt động
+- **Nguyên nhân:**
+  - Chân linh kiện không tiếp xúc tốt (mối hàn hở).
+  - Cắm sai cực linh kiện (đặc biệt là LED, diode, tụ phân cực).
+  - Gây đoản mạch do thiếc lan sang chân bên cạnh.
+- **Cách khắc phục:**
+  - Kiểm tra lại mạch bằng đồng hồ đo (continuity).
+  - Xem lại hướng đặt linh kiện.
+  - Hút lại thiếc và hàn lại đúng cách.
+
+---
+
+### 6. Mối hàn bong ra sau thời gian ngắn
+- **Nguyên nhân:**
+  - Mối hàn không đủ nhiệt, thiếc không bám chắc vào đồng.
+  - Linh kiện hoặc dây bị căng, rung lắc khi đang hàn.
+- **Cách khắc phục:**
+  - Đảm bảo không di chuyển linh kiện khi hàn.
+  - Dùng thêm keo cách điện hoặc keo silicon cố định cơ học.
+
+---
+
+### 7. Mỏ hàn bị đen, thiếc không bám
+- **Nguyên nhân:**
+  - Đầu mỏ bị oxi hóa do dùng lâu không vệ sinh.
+- **Cách khắc phục:**
+  - Dùng giấy nhám hoặc miếng cọ chuyên dụng để đánh sạch.
+  - Thường xuyên nhúng đầu mỏ vào mỡ hàn.
+
+---
+
+### 8. Chân linh kiện bị cháy, biến dạng
+- **Nguyên nhân:**
+  - Để mỏ hàn quá lâu trên chân linh kiện.
+- **Cách khắc phục:**
+  - Chỉ hàn trong 2–3 giây mỗi chân.
+  - Hàn linh kiện nhạy cảm nên dùng kẹp tản nhiệt hoặc làm nhanh.
+
+---
 
 
 

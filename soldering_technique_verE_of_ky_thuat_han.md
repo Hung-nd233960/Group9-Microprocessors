@@ -1,6 +1,6 @@
 # Soldering Techniques
 
-## First Update
+## Second Update
 
 ## Required Tools and Materials
 - Soldering flux (preferably containing rosin, also used to clean the soldering tip by dipping it into the flux container)
@@ -42,3 +42,86 @@
 - Hold the soldered joint in the air; placing it on a surface will cause heat dissipation, making the solder dry too quickly, which prevents proper solder flow
 - Avoid working in environments with fans or air conditioning
 - Hold both the soldering iron and solder wire firmly; otherwise, the solder might flow in the wrong direction or not adhere properly
+## Common Soldering Errors and How to Fix Them
+
+### 1. Solder Doesn't Stick
+- **Causes:**
+  - Metal surface is rusty, dirty, or oily.
+  - No flux applied or poor-quality solder.
+  - Soldering iron is not hot enough.
+- **Solutions:**
+  - Clean rust and wipe the surface with alcohol.
+  - Apply a thin layer of flux before soldering.
+  - Ensure the soldering iron reaches sufficient temperature (>300°C).
+
+---
+
+### 2. Sharp/Pointy Joint (Cold Joint)
+- **Causes:**
+  - Moving too fast; solder doesn't have time to melt evenly.
+  - Soldering iron or component not hot enough.
+- **Solutions:**
+  - Hold the iron in place a few seconds longer.
+  - Ensure solder melts fully and spreads over the lead and pad.
+
+---
+
+### 3. Oversized or Bulky Joint
+- **Causes:**
+  - Too much solder used.
+  - Feeding solder uncontrollably.
+- **Solutions:**
+  - Use just enough solder to cover the joint.
+  - Use a solder sucker or desoldering wick to remove excess solder.
+
+---
+
+### 4. Solder Bridges Between Pins (e.g., ICs)
+- **Causes:**
+  - Tip of soldering iron is too large or lacks control.
+  - Poor soldering technique.
+- **Solutions:**
+  - Use a solder sucker or wick to separate bridged pins.
+  - Resolder pins individually; you can use tape to isolate other pins.
+
+---
+
+### 5. Circuit Doesn't Work After Soldering
+- **Causes:**
+  - Poor contact (cold or open joints).
+  - Component inserted backward (LEDs, diodes, polarized capacitors).
+  - Short circuits caused by excess solder bridging pins.
+- **Solutions:**
+  - Check connections with a continuity tester or multimeter.
+  - Double-check component orientation.
+  - Rework joints with a solder sucker or wick and resolder correctly.
+
+---
+
+### 6. Joints Break After Short Time
+- **Causes:**
+  - Not enough heat or poor wetting — solder didn't bond well.
+  - Component or wire moved during soldering.
+- **Solutions:**
+  - Ensure nothing moves during soldering.
+  - Use hot glue or silicone to mechanically reinforce joints.
+
+---
+
+### 7. Soldering Iron Tip Turns Black, Solder Won’t Stick
+- **Causes:**
+  - Oxidized tip due to prolonged use without cleaning.
+- **Solutions:**
+  - Clean with sandpaper or a brass cleaning pad.
+  - Regularly dip the tip in flux to maintain a clean surface.
+
+---
+
+### 8. Burned or Deformed Component Leads
+- **Causes:**
+  - Keeping the iron on the lead too long.
+- **Solutions:**
+  - Limit soldering time to 2–3 seconds per pin.
+  - Use a heat sink clip or work quickly for sensitive components.
+
+---
