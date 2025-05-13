@@ -12,14 +12,14 @@ This handbook is written in Markdown format, which is a lightweight markup langu
 
 If you want to view images or any local content referenced in the handbook, make sure to clone the repository where this handbook is stored. This will allow you to access any embedded images or files linked within the document. If you're new to Markdown, most text editors and viewers can also display it correctly, but using a specialized tool will enhance your experience.
 
-
+# Phase 1: Preparation
 ## Week 1: Team-Forming, Workflow and Topic
 
 ### Date: Mar 03, 2025
 
 #### a. Group 9:
 - Consists of 3 members
-#### b. Workflow
+#### b. Workflow and Rules
 - Summary:
 	- All group work resides in the common public GitHub repository
 	- Messages via Messenger
@@ -31,7 +31,7 @@ If you want to view images or any local content referenced in the handbook, make
 #### d. Conclusion
 
 ## Week 2: Ideas and Vision
-
+#### Date: Mar 10, 2025
 
 ## Week 3: Rust Basics 1
 #### Date: Mar 17, 2025
@@ -47,10 +47,11 @@ In Basics 1, we will learn about basics of Rust: Cargo, Variables, Data Types, F
 The task for the week is to:
 
 - Understand the basics of Rust
+- How to Install Rust environment on machine, how to work with Cargo, rustup, setup in VSCode, Extensions
 - Write a small code that is "guessing game", guessing a number from 1 to 10 in command line
 - Compare C, Rust and Python by adding 1 million times.
 
-Please document everything you done, even the Rust language.
+Please document everything you done, even the installation of Rust, environment
 
 #### b. Conclusion:
 
@@ -67,20 +68,23 @@ More details in the file [Rust_01](Resources/Rust_01.md)
 ## Week 7: Serial Communication Protocols: I2C, SPI, UART
 
 
-## Week 8: Sensors: MAX30102, MPU6050
+# Phase 2: Design and Create
 
 
-## Week 9: Components 1: ESP32-C3, ESP32-C6
+## Week 8: System Design 1: What to Include?
 
 
-## Week 10: Components 2: SSD1306
-
-## Week 11: System Design
-
-## Week 12: Assemble Together
+## Week 9: Sensors: MAX30102, MPU6050
 
 
-## Week 13: Report 1
+## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306
+
+# Phase 3: Report and Testing
+
+## Week 12: Assemble Together. Testing 1
+
+
+## Week 13: Report 1. Testing 2
 
 
 ## Week 14: Report 2
