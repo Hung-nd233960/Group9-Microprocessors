@@ -25,7 +25,7 @@ If you want to view images or any local content referenced in the handbook, make
 	- Messages via Messenger
 	- Meetings through Teams
 	- Offline meetings in Lab when needed.
-- More details in the file [[Resources/WORKFLOW.md]]
+- More details in the file [WORKFLOW](Resources/WORKFLOW.md)
 #### c. Topic
 
 #### d. Conclusion
@@ -44,7 +44,17 @@ Rust is a general-purpose programming language emphasizing performance, type saf
 
 In Basics 1, we will learn about basics of Rust: Cargo, Variables, Data Types, Functions, Control Flow.
 
-More details in the file [[Resources/Rust_01.md]]
+The task for the week is to:
+
+- Understand the basics of Rust
+- Write a small code that is "guessing game", guessing a number from 1 to 10 in command line
+- Compare C, Rust and Python by adding 1 million times.
+
+Please document everything you done, even the Rust language.
+
+#### b. Conclusion:
+
+More details in the file [Rust_01](Resources/Rust_01.md)
 ## Week 4: Rust Basics 2
 
 
@@ -57,22 +67,23 @@ More details in the file [[Resources/Rust_01.md]]
 ## Week 7: Serial Communication Protocols: I2C, SPI, UART
 
 
-## Week 8: Sensors
+## Week 8: Sensors: MAX30102, MPU6050
 
 
 ## Week 9: Components 1: ESP32-C3, ESP32-C6
 
 
-## Week 10: Components 2: MAX30102, SSD1306
+## Week 10: Components 2: SSD1306
+
+## Week 11: System Design
+
+## Week 12: Assemble Together
 
 
-## Week 11: Assemble Together
+## Week 13: Report 1
 
 
-## Week 12: Report 1
+## Week 14: Report 2
 
 
-## Week 13: Report 2
-
-
-## Week 14: Report 3 and Conclusion
+## Week 15: Report 3 and Conclusion
