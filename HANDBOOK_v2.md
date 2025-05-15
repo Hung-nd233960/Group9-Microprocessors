@@ -121,6 +121,8 @@ Your task is to:
 More details is in the file [Rust_Embed_01](Resources/Rust_Embed_01.md)
 ## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics
 
+### Date: Apr 7, 2025
+
 Embassy is a project to make async/await a first-class option for embedded development.
 Soldering is a needed skill for every electronics engineer.
 
@@ -128,31 +130,96 @@ Your task is to:
 - Understand Embassy: How it achieves async without RTOS. What are executors. How to config your peripherals to work async with Embassy.
 - Learn soldering: How to solder, choosing the right tool, temperature and solder basic GPIO pins on the lab.
 
+#### c. Conclusion
+
 More details is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
 
 ## Week 7: Serial Communication Protocols: I2C, SPI, UART. 
 
+### Date: Apr 14, 2025
+
+This week focuses on the fundamental ways embedded devices talk to each other. These protocols form the backbone of sensor interfacing, memory communication, and peripheral control in microcontroller systems.
+
+Your task is to:
+
+- Learn the theory behind each protocol: how I2C handles addressing, how SPI ensures speed through simplicity, and why UART remains ubiquitous.
+- Analyze their timing, signaling, and wiring differences.
+- Practice: use a microcontroller to interface with at least one I2C sensor and one SPI device. Observe signal traces with a logic analyzer or oscilloscope.
+
+#### Conclusion
+
+More details is in the file [CommProtocol.md](Resources/CommProtocol.md)
+
 
 # Phase 2: Design and Create
 
-
 ## Week 8: System Design 1: What to Include?
 
+### Date: Apr 21, 2025
+
+This week shifts from isolated components to thinking like a system designer. You’ll begin architecting a complete embedded device—from sensing to decision-making to user interaction.
+
+Your task is to:
+
+* Define the **hardware stack**: Choose your MCU , power supply, input/output components, sensors (e.g., temperature, IMU, light), and user interface elements like buttons or a small display (e.g., OLED or TFT screen).
+* Identify the **software stack**: What operating model are you using—bare metal, RTIC, or async with Embassy? What crates/libraries are needed for drivers, HALs, or communication layers?
+* Map the system in terms of **data flow**: Where does the data originate, how is it processed, and where does it go (e.g., display, logs, actuators)?
+* Create **flowcharts** for user interactions or sensor events.
+* Draw **software diagrams** to clarify module responsibilities, message passing, and layers of abstraction.
+* Design **finite state machines (FSMs)** to handle device modes (e.g., idle, collecting, error, transmitting).
+
+By the end of the week, you should have a clear top-down plan of your system—hardware and software—that will guide implementation in future labs. 
+#### Conclusion
+
+More details is in the file [System_Design_01](Resources/System_Design_01)
 
 ## Week 9: Sensors: MAX30102, MPU6050
 
+### Date: Apr 28, 2025
 
+This week focuses on working with real-world sensors—capturing meaningful data from the physical environment and integrating it into your system.
+
+Your task is to:
+
+- Understand how the **MAX30102** works: its use in pulse oximetry and heart rate monitoring, I2C interface, and how to configure it for reliable readings. Learn how to read raw IR/Red data and filter it for usable heart rate or SpO2 estimation.
+- Explore the **MPU6050**: a 6-axis IMU combining accelerometer and gyroscope. Learn about register configuration, scaling factors, and how to interpret motion data.
+- Integrate both sensors into your system via I2C.
+- Test and visualize sensor data on a screen or via serial logging.
+- Research and note about the library [max3010x](https://docs.rs/max3010x/latest/max3010x/) library and [mpu6050](https://docs.rs/mpu6050/latest/mpu6050/) library, what functions do they support, how to do sensor reading.
+- Consider the possibilities of algorithms and tools to calculate, save and process sensor data. Kalman filters are recommended. 
+
+Extend your system diagrams to include sensor data flow and processing stages. Document your signal processing steps and update your FSMs to include sensor-driven state transitions.
+
+More details is in the file [Sensors](Resources/Sensors)
 ## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306
 
+### Date: May 05, 2025
+
+This week focuses on key components you’ll likely use in your final embedded system design: microcontrollers and displays. You'll get hands-on with the **ESP32-C3** and **ESP32-C6**, two modern, RISC-V-based Wi-Fi/Bluetooth MCUs from Espressif, and the **SSD1306**, a widely used I2C OLED display controller.
+
+Your task is to:
+
+- Explore the **ESP32-C3** and **C6**: understand their core differences (e.g., RISC-V vs Xtensa, BLE/Wi-Fi capabilities, peripherals), and how to flash Rust firmware using tools like `espflash`.
+- Set up a minimal Rust application using the `esp-hal` and Embassy (or bare-metal if preferred). Blink an LED, log over serial, and initialize I2C.
+- Integrate the **SSD1306** OLED display: initialize over I2C, draw text and graphics, and build a reusable screen abstraction.
+- Update your system diagrams and FSMs to include display logic (e.g., idle screen, error messages, real-time sensor output).
+- Compare power consumption, peripheral support, and async compatibility between the ESP32-C3 and C6—decide which fits your final project best. Evaluate which pins support I2C, SPI, UART.
+- Understand the workings of SSD1306 and its Rust driver: How does images get encoded, transferred? What is Buffered Graphics?
+- Buffered Graphics of SSD1306 are compatible with another popular graphics library: embedded_graphics. Please explain the functionalities of the library and how to design from it.
+#### Conclusion
+
+More details is in the file [Controller](Resources/controller.md)
 # Phase 3: Report and Testing
 
 ## Week 12: Assemble Together. Testing 1. Lab Work 2
 
-
+### Date: May 12, 2025
 ## Week 13: Report 1. Testing 2
 
-
+### Date: May 19, 2025
 ## Week 14: Report 2
 
-
+### Date: May 26, 2025
 ## Week 15: Report 3 and Conclusion
+
+### Date: Jun 02, 2025
