@@ -150,7 +150,6 @@ Your task is to:
 
 More details is in the file [CommProtocol.md](Resources/CommProtocol.md)
 
-
 # Phase 2: Design and Create
 
 ## Week 8: System Design 1: What to Include?
@@ -189,37 +188,65 @@ Your task is to:
 - Consider the possibilities of algorithms and tools to calculate, save and process sensor data. Kalman filters are recommended. 
 
 Extend your system diagrams to include sensor data flow and processing stages. Document your signal processing steps and update your FSMs to include sensor-driven state transitions.
+#### Conclusion
 
 More details is in the file [Sensors](Resources/Sensors)
 ## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306
 
 ### Date: May 05, 2025
 
+#### a. Microcontrollers: ESP32-C3, ESP32-C6
 This week focuses on key components you’ll likely use in your final embedded system design: microcontrollers and displays. You'll get hands-on with the **ESP32-C3** and **ESP32-C6**, two modern, RISC-V-based Wi-Fi/Bluetooth MCUs from Espressif, and the **SSD1306**, a widely used I2C OLED display controller.
 
 Your task is to:
 
 - Explore the **ESP32-C3** and **C6**: understand their core differences (e.g., RISC-V vs Xtensa, BLE/Wi-Fi capabilities, peripherals), and how to flash Rust firmware using tools like `espflash`.
 - Set up a minimal Rust application using the `esp-hal` and Embassy (or bare-metal if preferred). Blink an LED, log over serial, and initialize I2C.
-- Integrate the **SSD1306** OLED display: initialize over I2C, draw text and graphics, and build a reusable screen abstraction.
 - Update your system diagrams and FSMs to include display logic (e.g., idle screen, error messages, real-time sensor output).
 - Compare power consumption, peripheral support, and async compatibility between the ESP32-C3 and C6—decide which fits your final project best. Evaluate which pins support I2C, SPI, UART.
+#### b. OLED Screen: SSD1306
+
 - Understand the workings of SSD1306 and its Rust driver: How does images get encoded, transferred? What is Buffered Graphics?
 - Buffered Graphics of SSD1306 are compatible with another popular graphics library: embedded_graphics. Please explain the functionalities of the library and how to design from it.
-#### Conclusion
+- Integrate the **SSD1306** OLED display: initialize over I2C, draw text and graphics, and build a reusable screen abstraction.
+#### c. Conclusion
 
 More details is in the file [Controller](Resources/controller.md)
 # Phase 3: Report and Testing
 
-## Week 12: Assemble Together. Testing 1. Lab Work 2
+## Week 12: Assemble Together 1. Lab Work 2
+
+#### a. In Software
+
+
+#### b. In Hardware
+
+
+#### c. How to make things work together
 
 ### Date: May 12, 2025
-## Week 13: Report 1. Testing 2
+## Week 13: Assemble Together 2. Report 1. Testing 1
+
+#### a. Report Standards, Preparation
 
 ### Date: May 19, 2025
-## Week 14: Report 2
-
+## Week 14: Assemble Together 3. Report 2. Testing 2
 ### Date: May 26, 2025
+
+#### a. Packaging
+
+#### b. Toolchain
 ## Week 15: Report 3 and Conclusion
 
 ### Date: Jun 02, 2025
+
+#### a. Ratings, evaluation, compliance.
+#### b. Key ideas found
+
+#### c. Scrapped Ideas
+
+#### d. Beyond Microprocessors
+
+#### e. Conclusion
+
+
