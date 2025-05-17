@@ -15,7 +15,8 @@ If you want to view images or any local content referenced in the handbook, make
 
 # Table Of Contents
 
-## [[#Phase 1: Preparation]]
+### [Week 12: Assemble Together. Lab Work 2](#week-12-assemble-together-1-lab-work-2)
+
 
 [[#Week 1: Team-Forming, Workflow and Topic]]
 [[#Week 2 Ideas and Vision]]
