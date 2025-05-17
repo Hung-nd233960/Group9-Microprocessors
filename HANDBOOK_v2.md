@@ -15,17 +15,28 @@ If you want to view images or any local content referenced in the handbook, make
 
 # Table Of Contents
 
-### [Week 12: Assemble Together. Lab Work 2](#week-12-assemble-together-1-lab-work-2)
+### [Phase 1: Preparation](#phase-1-preparation)
 
+- [Week 1: Team-Forming, Workflow and Topic](#team-forming-workflow-and-topic)
+- [Week 2: Ideas and Vision](#week-2-ideas-and-vision)
+- [Week 3: Rust Basics 1](#week-3-rust-basics-1)
+- [Week 4: Rust Basics 2](#week-4-rust-basics-2)
+- [Week 5: Rust Embedded 1: esp-hal, no-std](#week-5-rust-embedded-1-esp-hal-no-std)
+- [Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics](#week-6-rust-embedded-2-embassy-framework--lab-work-1-soldering-basics)
+- [Week 7: Serial Communication Protocols: I2C, SPI, UART](#week-7-serial-communication-protocols-i2c-spi-uart)
 
-[[#Week 1: Team-Forming, Workflow and Topic]]
-[[#Week 2 Ideas and Vision]]
-[[#Week 3: Rust Basics 1]]
-[[#Week 4 Rust Basics 2]]
-[[#Week 12: Assemble Together 1. Lab Work 2]]
+### [Phase 2: Design and Create](#phase-2-design-and-create)
 
+- [Week 8: System Design 1: What to Include?](#week-8-system-design-1-what-to-include)
+- [Week 9: Sensors: MAX30102, MPU6050](#week-9-sensors-max30102-mpu6050)
+- [Week 10: Components: ESP32-C3, ESP32-C6, SSD1306](#week-10-components-esp32-c3-esp32-c6-ssd1306)
 
+### [Phase 3: Report and Testing](#phase-3-report-and-testing)
 
+- [Week 11: Assemble Together 1. Lab Work 2](#week-11-assemble-together-1-lab-work-2)
+- [Week 12: Assemble Together 2. Report 1. Testing 1](#week-12-assemble-together-2-report-1-testing-1)
+- [Week 13: Assemble Together 3. Report 2. Testing 2](#week-13-assemble-together-3-report-2-testing-2)
+- [Week 14: Report 3 and Conclusion](#week-14-report-3-and-conclusion)
 
 
 # Phase 1: Preparation
@@ -150,7 +161,7 @@ Your task is to:
 
 More details is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
 
-## Week 7: Serial Communication Protocols: I2C, SPI, UART. 
+## Week 7: Serial Communication Protocols: I2C, SPI, UART
 
 ### Date: Apr 14, 2025
 
@@ -231,7 +242,9 @@ Your task is to:
 More details is in the file [Controller](Resources/controller.md)
 # Phase 3: Report and Testing
 
-## Week 12: Assemble Together 1. Lab Work 2
+## Week 11: Assemble Together 1. Lab Work 2
+
+### Date: May 12, 2025
 
 #### a. In Software
 
@@ -243,16 +256,17 @@ More details is in the file [Controller](Resources/controller.md)
 
 #### d. Conclusion
 
-### Date: May 12, 2025
-## Week 13: Assemble Together 2. Report 1. Testing 1
+## Week 12: Assemble Together 2. Report 1. Testing 1
+
+### Date: May 19, 2025
 
 #### a. Report Standards, Preparation
 
 #### b. Preparation
 
 #### c. Conclusion
-### Date: May 19, 2025
-## Week 14: Assemble Together 3. Report 2. Testing 2
+
+## Week 13: Assemble Together 3. Report 2. Testing 2
 ### Date: May 26, 2025
 
 #### a. Packaging
@@ -262,7 +276,7 @@ More details is in the file [Controller](Resources/controller.md)
 #### c. Slides
 
 #### d. Conclusion
-## Week 15: Report 3 and Conclusion
+## Week 14: Report 3 and Conclusion
 
 ### Date: Jun 02, 2025
 
