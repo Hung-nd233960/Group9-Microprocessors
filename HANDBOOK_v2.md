@@ -12,6 +12,21 @@ This handbook is written in Markdown format, which is a lightweight markup langu
 
 If you want to view images or any local content referenced in the handbook, make sure to clone the repository where this handbook is stored. This will allow you to access any embedded images or files linked within the document. If you're new to Markdown, most text editors and viewers can also display it correctly, but using a specialized tool will enhance your experience.
 
+
+# Table Of Contents
+
+## [[#Phase 1: Preparation]]
+
+[[#Week 1: Team-Forming, Workflow and Topic]]
+[[#Week 2 Ideas and Vision]]
+[[#Week 3: Rust Basics 1]]
+[[#Week 4 Rust Basics 2]]
+[[#Week 12: Assemble Together 1. Lab Work 2]]
+
+
+
+
+
 # Phase 1: Preparation
 ## Week 1: Team-Forming, Workflow and Topic
 
@@ -42,7 +57,7 @@ If you want to view images or any local content referenced in the handbook, make
 
 Rust is a general-purpose programming language emphasizing performance, type safety, and concurrency. It enforces memory safety, meaning that all references point to valid memory.
 
-In Basics 1, we will learn about basics of Rust: Cargo, Variables, Data Types, Functions, Control Flow, Enum, Structs
+In Basics 1, we will learn about basics of Rust: Cargo, Variables, Data Types, Functions, Control Flow, Enums, Structs
 
 The task for the week is to:
 
@@ -196,6 +211,7 @@ More details is in the file [Sensors](Resources/Sensors)
 ### Date: May 05, 2025
 
 #### a. Microcontrollers: ESP32-C3, ESP32-C6
+
 This week focuses on key components you’ll likely use in your final embedded system design: microcontrollers and displays. You'll get hands-on with the **ESP32-C3** and **ESP32-C6**, two modern, RISC-V-based Wi-Fi/Bluetooth MCUs from Espressif, and the **SSD1306**, a widely used I2C OLED display controller.
 
 Your task is to:
@@ -224,11 +240,16 @@ More details is in the file [Controller](Resources/controller.md)
 
 #### c. How to make things work together
 
+#### d. Conclusion
+
 ### Date: May 12, 2025
 ## Week 13: Assemble Together 2. Report 1. Testing 1
 
 #### a. Report Standards, Preparation
 
+#### b. Preparation
+
+#### c. Conclusion
 ### Date: May 19, 2025
 ## Week 14: Assemble Together 3. Report 2. Testing 2
 ### Date: May 26, 2025
@@ -236,6 +257,10 @@ More details is in the file [Controller](Resources/controller.md)
 #### a. Packaging
 
 #### b. Toolchain
+
+#### c. Slides
+
+#### d. Conclusion
 ## Week 15: Report 3 and Conclusion
 
 ### Date: Jun 02, 2025
