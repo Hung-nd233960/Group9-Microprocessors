@@ -24,7 +24,7 @@ Key features include:
 
 ### Pinout
 
-![alt text](image-43.png)
+![alt text](images-Sensors-Controller/image-43.png)
 
 #### Pin Mappings
 
@@ -76,7 +76,7 @@ Key features include:
 
 ### Pinout
 
-![alt text](image-44.png)
+![alt text](images-Sensors-Controller/image-44.png)
 
 #### Pin Mappings
 
@@ -226,7 +226,7 @@ Key features include:
 ## SSD1306 
 - The SSD1306 is the integrated controller chip that powers many small OLED displays including the module we are going to use(0.96-inch 128x64 module). This controller handles the communication between the ESP32 and the OLED panel, enabling the display to show text, graphics, and more.
 
-![alt text](image-39.png)
+![alt text](images-Sensors-Controller/image-39.png)
 
 - OLED, short for Organic Light-Emitting Diode, is a popular display module. These displays come in various sizes and can support different colors. They communicate using either the I²C or SPI protocol.
 
@@ -238,16 +238,16 @@ In the datasheet, the 128 columns are referred to as segments, while the 64 rows
 #### Memory
 The OLED display's pixels are arranged in a page structure within GDDRAM (Graphics Display DRAM). GDDRAM is divided into 8 pages (From Page 0 to Page 7), each consisting of 128 columns (segments) and 8 rows(commons).
 
-![alt text](image-40.png)
+![alt text](images-Sensors-Controller/image-40.png)
 
 A segment is 8 bits of data (one byte), with each bit representing a single pixel. When writing data, you will write an entire segment, meaning the entire byte is written at once.
 
-![alt text](image-41.png)
+![alt text](images-Sensors-Controller/image-41.png)
 We can re-map both segments and commons through software for mechanical flexibility.
 
 #### Pages and Segments
 I created an image to show how 128x64 pixels are divided into 8 pages. I then focused on a single page, which contains 128 segments (columns) and 8 rows. Finally, I zoomed in on a single segment to demonstrate how it represents 8 vertically stacked pixels, with each pixel corresponding to one bit.
-![alt text](image-42.png)
+![alt text](images-Sensors-Controller/image-42.png)
 
 #### Circuit 
 We will use I2C for communication between the ESP32 and the OLED display. For I2C, two GPIO pins need to be configured as SDA (Serial Data) and SCL (Serial Clock). On the ESP32, we can use any GPIO pins for I2C. We'll configure GPIO pin 9 as SCL and GPIO pin 8 as SDA. The VCC pin of the OLED will be connected to the 3.3V pin of the ESP32, and the Ground pin will be connected to the ESP32's ground.

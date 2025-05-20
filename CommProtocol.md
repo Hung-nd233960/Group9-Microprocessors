@@ -5,7 +5,7 @@ SPI is a synchronous, full duplex main-subnode-based interface. The data from th
 
 ## Interface
 
-![alt text](image.png)
+![alt text](images-CommProtocol/image.png)
 
 4-wire SPI devices have four signals:
 
@@ -39,19 +39,19 @@ In SPI, the main can select the clock polarity and clock phase. The CPOL bit set
 
 Figure 2 through Figure 5 show an example of communication in four SPI modes. In these examples, the data is shown on the MOSI and MISO line. The start and end of transmission is indicated by the dotted green line, the sampling edge is indicated in orange, and the shifting edge is indicated in blue. Please note these figures are for illustration purpose only. For successful SPI communications, users must refer to the product data sheet and ensure that the timing specifications for the part are met.
 
-![alt text](image-1.png)
+![alt text](images-CommProtocol/image-1.png)
 
 Figure 3 shows the timing diagram for SPI Mode 1. In this mode, clock polarity is 0, which indicates that the idle state of the clock signal is low. The clock phase in this mode is 1, which indicates that the data is sampled on the falling edge (shown by the orange dotted line) and the data is shifted on the rising edge (shown by the dotted blue line) of the clock signal.
 
-![alt text](image-2.png)
+![alt text](images-CommProtocol/image-2.png)
 
 Figure 4 shows the timing diagram for SPI Mode 2. In this mode, the clock polarity is 1, which indicates that the idle state of the clock signal is high. The clock phase in this mode is 0, which indicates that the data is sampled on the falling edge (shown by the orange dotted line) and the data is shifted on the rising edge (shown by the dotted blue line) of the clock signal.
 
-![alt text](image-3.png)
+![alt text](images-CommProtocol/image-3.png)
 
 Figure 5 shows the timing diagram for SPI Mode 3. In this mode, the clock polarity is 1, which indicates that the idle state of the clock signal is high. The clock phase in this mode is 1, which indicates that the data is sampled on the rising edge (shown by the orange dotted line) and the data is shifted on the falling edge (shown by the dotted blue line) of the clock signal
 
-![alt text](image-4.png)
+![alt text](images-CommProtocol/image-4.png)
 
 ## Multi-Subnode Configuration
 
@@ -59,7 +59,7 @@ Multiple subnodes can be used with a single SPI main. The subnodes can be connec
 
 Regular SPI Mode : 
 
-![alt text](image-5.png)
+![alt text](images-CommProtocol/image-5.png)
 
 In regular mode, an individual chip select for each subnode is required from the main. Once the chip select signal is enabled (pulled low) by the main, the clock and data on the MOSI/MISO lines are available for the selected subnode. If multiple chip select signals are enabled, the data on the MISO line is corrupted, as there is no way for the main to identify which subnode is transmitting the data.
 
@@ -67,13 +67,13 @@ As can be seen from Figure 6, as the number of subnodes increases, the number of
 
 Daisy-Chain Method: 
 
-![alt text](image-6.png)
+![alt text](images-CommProtocol/image-6.png)
 
 In daisy-chain mode, the subnodes are configured such that the chip select signal for all subnodes is tied together and data propagates from one subnode to the next. In this configuration, all subnodes receive the same SPI clock at the same time. The data from the main is directly connected to the first subnode and that subnode provides data to the next subnode and so on.
 
 In this method, as data is propagated from one subnode to the next, the number of clock cycles required to transmit data is proportional to the subnode position in the daisy chain. For example, in Figure 7, in an 8-bit system, 24 clock pulses are required for the data to be available on the 3rd subnode, compared to only eight clock pulses in regular SPI mode. Figure 8 shows the clock cycles and data propagating through the daisy chain. Daisy-chain mode is not necessarily supported by all SPI devices. Please refer to the product data sheet to confirm if daisy chain is available.
 
-![alt text](image-7.png)
+![alt text](images-CommProtocol/image-7.png)
 
 # Universal Asynchronous Receiver Transmitter (UART) Protocol
 
@@ -85,7 +85,7 @@ UART is established for serial communication. In this article, we will discuss h
 
 UART is a Universal Asynchronous Receiver Transmitter protocol that is used for serial communication. Two wires are established here in which only one wire is used for transmission whereas the second wire is used for reception. Data format and transmission speeds can be configured here. So, before starting with the communication define the data format and transmission speed. Data format and transmission speed for communication will be defined here and we do not have a clock over here that's why it is referred to as asynchronous communication with UART protocol. Here we will see how this protocol is designed physically.
 
-![alt text](image-8.png)
+![alt text](images-CommProtocol/image-8.png)
 
 Here, DEVICE A that is having transmitter PIN and a receiver pin; DEVICE B is having a receiver and transmission pin. The Transmitter of DEVICE A is one that should be connected with the receiver pin of DEVICE B and the transmitter pin of DEVICE B should be connected with the receiver pin of DEVICE A we just need to connect two wires for communication. 
 
@@ -99,7 +99,7 @@ Now we will see the data format and when the communication is according to UART 
 
 ## UART Data Format
 
-![alt text](image-9.png)
+![alt text](images-CommProtocol/image-9.png)
 
 Suppose DEVICE A is sending data to DEVICE B, and the transmitter of DEVICE A will send data to the receiver of Device B then it will be logic high. Now, send the start bit that will be logic 0 and once we have the start bit, DEVICE B will know that somebody is communicating. Now there is the same speed configuration with both devices. So, after the start bit, DEVICE A can forward data.
 

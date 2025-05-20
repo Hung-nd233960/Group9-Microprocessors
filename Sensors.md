@@ -9,14 +9,14 @@ complete system solution to ease the design-in process
 for mobile and wearable devices.
 
 - Behind the window on one side, the MAX30102 has two LEDs – a RED and an IR LED. On the other side is a very sensitive photodetector. The idea is that you shine a single LED at a time, detecting the amount of light shining back at the detector, and, based on the signature, you can measure blood oxygen level and heart rate.
-    ![alt text](image-1.png)
+    ![alt text](images-Sensors-Controller/image-1.png)
 
 - The MAX30102 chip requires two different supply voltages: 1.8V for the IC and 3.3V for the RED and IR LEDs. So the module comes with 3.3V and 1.8V regulators.
-    ![alt text](image-2.png)
+    ![alt text](images-Sensors-Controller/image-2.png)
 
 - On the back of the PCB you’ll find a solder jumper that can be used to select between 3.3V and 1.8V logic level. You can also select 1.8V logic level as per your requirement. This allows you to connect the module to any microcontroller with 5V, 3.3V, even 1.8V level I/O.
     
-    ![alt text](image-3.png)
+    ![alt text](images-Sensors-Controller/image-3.png)
 
 - One of the most important features of the MAX30102 is its low power consumption: the MAX30102 consumes less than 600μA during measurement. Also it is possible to put the MAX30102 in standby mode, where it consumes only 0.7μA. This low power consumption allows implementation in battery powered devices such as handsets, wearables or smart watches.
 
@@ -38,7 +38,7 @@ The MAX30102 can be programmed to generate an interrupt, allowing the host micro
 - Ambient Light Cancellation: triggers when the ambient light cancellation function of the SpO2/HR photodiode reaches its maximum limit, affecting the output of the ADC.
 - Temperature Ready: triggers when an internal die temperature conversion is finished.
 - FIFO Almost Full: triggers when the FIFO becomes full and future data is about to be lost.
-    ![alt text](image-4.png)
+    ![alt text](images-Sensors-Controller/image-4.png)
 
 The INT line is an open-drain, so it is pulled HIGH by the onboard resistor. When an interrupt occurs the INT pin goes LOW and stays LOW until the interrupt is cleared.
 
@@ -55,7 +55,7 @@ The INT line is an open-drain, so it is pulled HIGH by the onboard resistor. Whe
 
 ### How MAX30102 Pulse Oximeter and Heart Rate Sensor Works?
 The MAX30102, or any optical pulse oximeter and heart-rate sensor for that matter, consists of a pair of high-intensity LEDs (RED and IR, both of different wavelengths) and a photodetector. The wavelengths of these LEDs are 660nm and 880nm, respectively.
-    ![alt text](image-5.png)
+    ![alt text](images-Sensors-Controller/image-5.png)
 
 The MAX30102 works by shining both lights onto the finger or earlobe (or essentially anywhere where the skin isn’t too thick, so both lights can easily penetrate the tissue) and measuring the amount of reflected light using a photodetector. This method of pulse detection through light is called Photoplethysmogram.
 
@@ -63,16 +63,16 @@ The working of MAX30102 can be divided into two parts: Heart Rate Measurement an
 
 #### Heart Rate Measurement
 - The oxygenated hemoglobin (HbO2) in the arterial blood has the characteristic of absorbing IR light. The redder the blood (the higher the hemoglobin), the more IR light is absorbed. As the blood is pumped through the finger with each heartbeat, the amount of reflected light changes, creating a changing waveform at the output of the photodetector. As you continue to shine light and take photodetector readings, you quickly start to get a heart-beat (HR) pulse reading.
-    ![alt text](image-6.png)
+    ![alt text](images-Sensors-Controller/image-6.png)
 #### Pulse Oximetry
 - Pulse oximetry is based on the principle that the amount of RED and IR light absorbed varies depending on the amount of oxygen in your blood. The following graph is the absorption-spectrum of oxygenated hemoglobin (HbO2) and deoxygenated hemoglobin (Hb).
-    ![alt text](image-7.png)
+    ![alt text](images-Sensors-Controller/image-7.png)
 
 - As you can see from the graph, deoxygenated blood absorbs more RED light (660nm), while oxygenated blood absorbs more IR light (880nm). By measuring the ratio of IR and RED light received by the photodetector, the oxygen level (SpO2) in the blood is calculated.
 
 ### MAX30102 Module Pinout
     
-![alt text](image-8.png)
+![alt text](images-Sensors-Controller/image-8.png)
 
 - VIN is the power pin. You can connect it to 3.3V or 5V output from your ESP32.
 - SCL is the I2C clock pin, connect to your ESP32’s I2C clock line.
@@ -86,7 +86,7 @@ The working of MAX30102 can be divided into two parts: Heart Rate Measurement an
 
 The **MAX30102** is an integrated optical sensor used to measure **heart rate** and **blood oxygen saturation (SpO₂)**. The following system diagram illustrates the **full operation flow** from the controlling software to the optical signal processing and data output.
 
-![alt text](image-9.png)
+![alt text](images-Sensors-Controller/image-9.png)
 
 ---
 
@@ -192,7 +192,7 @@ The MAX30102 is a powerful integrated sensor capable of:
 - Widely used in wearables and personal health monitoring devices.
 
 ### Functional Diagram 
-![alt text](image-18.png)
+![alt text](images-Sensors-Controller/image-18.png)
 ### 🔧 MAX30102 Functional Diagram – In-Depth Explanation
 
 The **Functional Diagram** of the MAX30102 provides a lower-level internal view of how the sensor's hardware components are structured and interact. Unlike the high-level system diagram, this shows the **signal flow**, **conversion stages**, and **embedded control logic**.
@@ -359,23 +359,23 @@ Interrupts:
 
 Test case :
 
-![alt text](image-45.png)
+![alt text](images-Sensors-Controller/image-45.png)
 
 ### Electrical Characteristics 
-![alt text](image-10.png)
-![alt text](image-11.png)
-![alt text](image-12.png)
-![alt text](image-13.png)
+![alt text](images-Sensors-Controller/image-10.png)
+![alt text](images-Sensors-Controller/image-11.png)
+![alt text](images-Sensors-Controller/image-12.png)
+![alt text](images-Sensors-Controller/image-13.png)
 
 ### Detailed I2C Compatible Interface Timing Tiagram 
-![alt text](image-23.png)
+![alt text](images-Sensors-Controller/image-23.png)
 - To understand it , read below 
 ## Understand the I2C Protocol
 - The I2C protocol also known as the two wire interface is a simple serial communication protocol that uses just two pins of a microcontroller namely SCL (serial clock) and SDA (serial data). This is a very popular protocol that can be used to address a large number of slave devices that are connected to the same bus. This protocol comes in handy when there is scarcity of available pins in the microcontroller. Each slave device has a slave address or a name for which they respond. This is usually a 7-bit binary number. Once a master sends a valid slave address, that slave alone will respond to the master’s queries and all other slaves will ignore any conversation between the master and that particular slave.
 
 - There are a number of conditions that can be made over the I2C bus such as start and stop sequence. The data line does not change when the clock line is HIGH. If the data line changes when the clock line is High, the slave device interprets it as a command and not as data. This is the only feature in the interface that puts a distinct line between the command and data.
 ### I2C General Protocol Timing Diagram
-![alt text](image-14.png)
+![alt text](images-Sensors-Controller/image-14.png)
 ### Understanding the Start and Stop sequence of I2C Protocol
 - The timing diagram above has the start sequence shown in the dotted box to the left. Here if you notice the data line SDA is having a High to Low transition when the clock line SCL is HIGH. Under normal circumstances this does not happen as you can see in the subsequent clock pulses that the data line is stable in one state, either HIGH or LOW when the clock line is HIGH. Similarly to the right most side of the diagram you will find another dotted box with the stop sequence (see the one with the solid line inside the box). The data line experiences a LOW to HIGH transition when the clock line is HIGH.
 
@@ -387,23 +387,23 @@ Test case :
 - The rule of thumb is that every time the slave devices experiences Start sequence it expects a 7-bit slave address along with a read/write specifier in the MSB (0 - for write and 1 - read). If the specifier is set to write then the next data written will be the address to the register to which the consecutive data is to be written. The device automatically increments the register pointer after a success full write. On the other hand if the specifier is set to read then the incoming data from the bus will return the value of the register to which the stack pointer was last pointing to and the consecutive registers following it.
 ### Sequentially write data to a slave device with I2C Protocol
 - Here, the slave address with the write specifier is sent after the Start sequence. The slave sends an Acknowledge to the master (MCU). Then the next byte of data written to the slave device is the address of the register to write to. Following this there can be any number of sequential write operations with slave sending Acknowledge after every byte of data written to the register starting from the register specified by the address and sequentially moving up after each write operation. This can be terminated by sending a Stop sequence.
-![alt text](image-15.png)
+![alt text](images-Sensors-Controller/image-15.png)
 ### Sequentially read data from a slave device with I2C Protocol
 - Initially the slave address with the read specifier is sent after the Start sequence. The Slave sends an Acknowledge to the MCU. Following this there can be any number of sequential read operations with master(MCU) sending Acknowledge after every byte of data read from the register last written in the write operation (since, address of the register to read from is not specified here). This sequential read can be stopped by sending a Not Acknowledge signal followed by a Stop sequence
-![alt text](image-16.png)
+![alt text](images-Sensors-Controller/image-16.png)
 ### Sequentially read and write data as a combination of the above two methods
 - This process is just a mixture of both the sequential read and sequential write methods. Initially the slave address with the write specifier is sent after the Start sequence. Then the next data to be written will be the address of the register in the slave device over which the operation is going to be performed. Once this is done a repeated start sequence is made and and the 7-bit slave address with the read specifier is transmitted. Following this there can be any number of sequential reads from the register address specified in the previous step along with all the registers that follow it. The register address is automatically incremented by the device. The sequential read will involve the master (MCU) sending an Acknowledge to the slave after every byte of data read. The repeated read process can be stopped by sending a Not Acknowledge signal followed by a stop sequence.
-![alt text](image-17.png)
+![alt text](images-Sensors-Controller/image-17.png)
 
 ### Using Oscilloscope to read I2C 
-![alt text](start-condition.png)
+![alt text](images-Sensors-Controller/start-condition.png)
 - The yellow line is the SCL signal , the blue line is the SDA signal
-![alt text](image-21.png)
+![alt text](images-Sensors-Controller/image-21.png)
 - 57 is the I2C address of MAX30102 , in hexadecimal form (in binary it is 1010111 - see correspondingly in the image)
 - After that , SDA got 00 , it was the Write specifier and ACK signal . Then it wrote 0000100 to choose the address of the register 0x04 (FIFO Write Pointer)
 - Then the sensor sent ACK to MCU to confirm , then the MCU send the sensor's address followed by bit 1 to access the sensor => convert to read mode : access register address 0x06 (FIFO Read Pointer)
 - Finally , it read again 0x57 (I2C adress) and 0x07 (FIFO Data Register) and the sensor now started streaming data to the MCU .
-![alt text](image-22.png)
+![alt text](images-Sensors-Controller/image-22.png)
 - Each result takes 4 bytes of data . 
 
 ## MPU6050 
@@ -411,7 +411,7 @@ Test case :
 - To understand how this sensor works , search for MEMS Accelerometer and MEMS gyroscope , Coriolis Effect
 - A MEMS (Micro-Electro-Mechanical System) accelerometer is a micro-machined structure built on top of a silicon wafer.
 
-  ![alt text](image-24.png)
+  ![alt text](images-Sensors-Controller/image-24.png)
 - At the core of the module is a low-power, low-cost 6-axis MotionTracking chip – MPU6050 – that integrates a 3-axis gyroscope, 3-axis accelerometer, and a Digital Motion Processor (DMP) into a tiny 4mm x 4mm package.
 - It can measure angular momentum or rotation along all three axes, static acceleration caused by gravity, and dynamic acceleration caused by motion, shock, or vibration.
 - The module includes an on-board LD3985 3.3V regulator, so you can safely use it with a 5V logic microcontroller
@@ -421,13 +421,13 @@ Test case :
 
 ### Measuring Acceleration 
 - The MPU6050 has an on-chip accelerometer that can measure acceleration over four programmable full scale ranges of ±2g, ±4g, ±8g, and ±16g.
-  ![alt text](image-25.png)
+  ![alt text](images-Sensors-Controller/image-25.png)
 - The MPU6050 is equipped with three 16-bit analog-to-digital converters that simultaneously sample the three axes of movement (along the X, Y, and Z axes).
 
 
 ### Measuring Rotation 
 - The MPU6050 has an on-chip gyroscope that can measure angular rotation over four programmable full scale ranges of ±250°/s, ±500°/s, ±1000°/s, and ±2000°/s.
-  ![alt text](image-26.png)
+  ![alt text](images-Sensors-Controller/image-26.png)
 - The MPU6050 is equipped with three more 16-bit analog-to-digital converters that simultaneously sample the three axes of rotation (along the X, Y, and Z axes). The sampling rate can be adjusted from 3.9 to 8000 samples per second.
 
 
@@ -440,14 +440,14 @@ Test case :
 ### The I2C Interface
 - The module communicates with the Arduino via the I2C interface. It supports two different I2C addresses: 0x68HEX and 0x69HEX. This allows two MPU6050s to be used on the same bus or to avoid address conflicts with other devices on the bus.
 
-  ![alt text](image-27.png)
+  ![alt text](images-Sensors-Controller/image-27.png)
 
 - The ADO pin determines the I2C address of the module. This pin is pulled down with a 4.7K resistor. Therefore, when you leave the ADO pin unconnected, the default I2C address is 0x68HEX; when you connect it to 3.3V, the line is pulled HIGH, and the I2C address becomes 0x69HEX.
 
 ### Adding External Sensors
 - You can improve the accuracy of the MPU6050 module even further by connecting external sensors to it. These external sensors can be connected to the MPU6050 via a second, completely independent I2C bus (XDA and XCL).
 
-  ![alt text](image-28.png)
+  ![alt text](images-Sensors-Controller/image-28.png)
 
 - This external connection is usually used to attach a magnetometer, which can measure magnetic fields along three axes. The MPU6050 has six Degrees of Freedom (DOF), three for the accelerometer and three for the gyroscope combined. The addition of a magnetometer increases the sensor’s degree of freedom from 6 to 9 DOF.
 
@@ -463,7 +463,7 @@ Test case :
 
 ### MPU6050 Module Pinout
 
-![alt text](image-29.png)
+![alt text](images-Sensors-Controller/image-29.png)
 
 - VCC supplies power to the module.
 
@@ -544,26 +544,26 @@ Setting Accel HPF/LPF
 
 
 Test case (Just read data) : 
-![alt text](image-30.png)
+![alt text](images-Sensors-Controller/image-30.png)
 Test case (Both read data and fall detection) :
-![alt text](image-46.png)
-![alt text](image-47.png)
+![alt text](images-Sensors-Controller/image-46.png)
+![alt text](images-Sensors-Controller/image-47.png)
 ### Electrical Characteristics
-![alt text](image-31.png)
-![alt text](image-32.png)
-![alt text](image-33.png)
-![alt text](image-34.png)
-![alt text](image-35.png)
-![alt text](image-36.png)
-![alt text](image-37.png)
+![alt text](images-Sensors-Controller/image-31.png)
+![alt text](images-Sensors-Controller/image-32.png)
+![alt text](images-Sensors-Controller/image-33.png)
+![alt text](images-Sensors-Controller/image-34.png)
+![alt text](images-Sensors-Controller/image-35.png)
+![alt text](images-Sensors-Controller/image-36.png)
+![alt text](images-Sensors-Controller/image-37.png)
 
 ### Read I2C from Oscilloscope 
-![alt text](startmpu.png)
+![alt text](images-Sensors-Controller/startmpu.png)
 - The yellow line is the SCL signal , the blue line is the SDA signal
 - After start condition , it followed by 1101000 = 0x68 in hexadecimal form (I2C address of MPU6050) 
 - After that , SDA got 00 , it was the Write specifier and ACK signal . Then it wrote 00111011 to choose the address of the register 0x3B (FIFO Write Pointer)
 - Then the sensor sent ACK to MCU to confirm , then the MCU send the sensor's address followed by bit 1 to access the sensor => convert to read mode : access register address 0x43 (FIFO Read Pointer)
 - Finally , it sent an ACK signal then started streaming data to MCU . 
-![alt text](image-38.png)
+![alt text](images-Sensors-Controller/image-38.png)
 - After access register address 0x43 and sent ACK clock
 
