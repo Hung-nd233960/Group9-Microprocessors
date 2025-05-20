@@ -224,7 +224,7 @@ By combining HR, SpO₂, steps, and location, people can **better understand the
 
 #### Overview
 
-![Image](Resources/DIAGRAM/Sequence%20diagram.png)
+![Image](sequential_diagram.png)
 
 #### Week 4
 
