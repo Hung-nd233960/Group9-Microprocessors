@@ -546,7 +546,8 @@ Setting Accel HPF/LPF
 Test case (Just read data) : 
 ![alt text](image-30.png)
 Test case (Both read data and fall detection) :
-
+![alt text](image-46.png)
+![alt text](image-47.png)
 ### Electrical Characteristics
 ![alt text](image-31.png)
 ![alt text](image-32.png)
