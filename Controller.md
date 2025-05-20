@@ -287,6 +287,10 @@ ssd1306 = { git = "https://github.com/rust-embedded-community/ssd1306.git", rev 
 
 - Embedded Graphics : 
 
+embedded-graphics = "0.8.1"
+
+Read here to know how to use it : https://docs.rs/embedded-graphics/latest/embedded_graphics/
+
 To display text or draw images on the OLED display, we will use the embedded_graphics crate in combination with the ssd1306 crate.
 
 "Embedded-graphics is a 2D graphics library that is focused on memory constrained embedded devices."
@@ -294,6 +298,17 @@ To display text or draw images on the OLED display, we will use the embedded_gra
 "A core goal of embedded-graphics is to draw graphics without using any buffers; the crate is no_std compatible and works without a dynamic memory allocator, and without pre-allocating large chunks of memory. To achieve this, it takes an Iterator based approach, where pixel colors and positions are calculated on the fly, with the minimum of saved state. This allows the consuming application to use far less RAM at little to no performance penalty."
 
 You can use this crate with various OLED displays and drivers when working with different types of OLED modules. The documentation provides a detailed explanation of the features and supported drivers. I recommend going through it.
+
+Note : 
+Add this in your Cargo.toml file : 
+```
+ssd1306 = { git = "https://github.com/rust-embedded-community/ssd1306.git", rev = "f3a2f7aca421fbf3ddda45ecef0dfd1f0f12330e", features = [
+    "async",
+] }
+embedded-graphics = "0.8.1"
+tinybmp = "0.6.0"
+
+```
 
 ### Try print something on Oled screen
 
@@ -305,5 +320,13 @@ You can use this crate with various OLED displays and drivers when working with 
 
 ### Using Bitmap Image file
 
+You can use BMP (.bmp) files directly instead of raw image data by utilizing the tinybmp crate. tinybmp is a lightweight BMP parser designed for embedded environments. While it is mainly intended for drawing BMP images to embedded_graphics DrawTargets, it can also be used to parse BMP files for other applications.
+
+The crate requires the image to be in BMP format. If your image is in another format, you will need to convert it to BMP. For example, you can use the following command on Linux to convert a PNG image to a monochrome BMP:
+
+`convert ferris.png -monochrome ferris.bmp`
+
 ![alt text](images-Sensors-Controller/image-55.png)
+
+
 
