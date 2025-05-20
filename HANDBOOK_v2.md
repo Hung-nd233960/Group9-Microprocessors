@@ -64,9 +64,16 @@ If you want to view images or any local content referenced in the handbook, make
 #### a. Ideas and Vision
 
 
+Overall block diagram of the system:
+![BlockDiagram](Resources/DIAGRAM/block_diagram.png)
+A snippet of the sequential diagram the system can behave:
+![alt-text](Resources/DIAGRAM/sequential_diagram.png)
 #### b. Conclusion
 
+This architecture ensures a robust, secure, and user-friendly connection between SpO₂ monitoring clients and the central server. The combination of **proximity-based pairing, cryptographic authentication, and encrypted communication** mitigates security risks while maintaining ease of use for end-users. The design choices made prioritize practical security within the constraints of embedded systems, ensuring a reliable and efficient solution.
 
+Investigation of the topic is in [Investigation](Investigation.md)
+Initial Setup of the system: [Initial_Setup_Idea](Resources/Initial_setup_idea.md)
 ## Week 3: Rust Basics 1 (DONE)
 #### Date: Mar 17, 2025
 
@@ -244,11 +251,11 @@ Your task is to:
 
 #### Conclusion
 
-More details is in the file [CommProtocol.md](Resources/CommProtocol.md)
+More details is in the file [CommProtocol.md](CommProtocol.md)
 
 # Phase 2: Design and Create
 
-## Week 8: System Design 1: What to Include?
+## Week 8: System Design 1: What to Include? (NOT WORKING YET)
 
 ### Date: Apr 21, 2025
 
@@ -265,6 +272,8 @@ Your task is to:
 
 By the end of the week, you should have a clear top-down plan of your system—hardware and software—that will guide implementation in future labs. 
 #### Conclusion
+
+We conclude that the scope of project, Sensor block integrated into client block, Server block is not being developed
 
 More details is in the file [System_Design_01](Resources/System_Design_01)
 
@@ -296,13 +305,14 @@ Both sensors were integrated via I2C, with successful communication verified thr
 
 From a systems perspective:
 
-- We extended the **architecture diagrams** to reflect the new **sensor input and processing pipelines**.
-- We updated our **finite state machines (FSMs)** to incorporate **sensor-driven transitions**, such as moving into an “active” or “alert” state based on detected movement or heart rate anomalies.
 - We explored potential **signal processing techniques**—including **Kalman filtering**—to smooth noisy sensor data and enable robust, real-time decisions.
     
 In summary, this week solidified the sensor layer of the system.
 
 Also, a lab work investigating I2C signal with Ocilloscopes is being done.
+
+C testing for mpu6050 is provided folder test_C
+Rust testing code for max30102 and mpu6050 is in folder max30102
 
 More details is in the file [Sensors](Resources/Sensors), [Kalman](Resources/Kalman.md)
 
@@ -372,19 +382,65 @@ The **FSMs** were extended to include **display feedback per state**, enabling t
 More details is in the file [Controller](Resources/Controller.md)
 # Phase 3: Report and Testing
 
-## Week 11: Assemble Together 1. Lab Work 2
+## Week 11: Assemble Together 1. Lab Work 2 (NO REPORT YET)
 
 ### Date: May 12, 2025
 
-#### a. In Software
+### **a. In Software**
 
+This week, we attempted to unify previously developed software modules—sensor drivers (MAX30102, MPU6050), display control (SSD1306), and microcontroller firmware—into a single, cohesive Rust project. The goal was to initialize all components concurrently, enabling synchronized data acquisition, display, and logging.
 
-#### b. In Hardware
+We utilized:
 
+- The `esp-hal` crate for hardware abstractions
+- `embassy` for async task management and concurrent peripherals
+- `max3010x`, `mpu6050`, and `ssd1306` crates for sensor/display drivers
+- I2C communication over async/await with `embassy-time` for cooperative multitasking
+    
+However, **integration issues emerged** when combining I2C devices with the async `embassy` framework. Specifically:
 
-#### c. How to make things work together
+- The I2C drivers for `mpu6050` and `max3010x` expect blocking I2C traits from `embedded-hal`
+- The async I2C abstraction from Embassy (`embassy_embedded_hal`) is not directly compatible with the existing sensor drivers
+- Attempting to convert or wrap interfaces led to lifetime or trait errors, due to mismatched expectations between blocking and async APIs
 
-#### d. Conclusion
+We were unable to get all components to communicate simultaneously under Embassy-based concurrency.
+
+---
+
+### **b. In Hardware**
+
+Hardware setup involved:
+
+- Connecting the MAX30102, MPU6050, and SSD1306 to the ESP32-C3 via I2C
+- Using a shared bus with appropriate pull-up resistors
+- Verifying individual sensor power and signal integrity with a logic analyzer and multimeter
+- Ensuring SDA and SCL lines were stable, voltage levels were correct (3.3V), and no shorts existed
+
+Each device functioned **individually** when tested in isolation. However, when combined on the same I2C bus within the integrated firmware, we encountered failures—likely due to timing mismatches or conflicting I2C transaction expectations between blocking and async approaches.
+
+### **c. How to Make Things Work Together**
+
+To unify the system, several possible paths forward were identified:
+
+1. **Avoid async/Embassy** for now and fall back to a **pure `esp-hal` + blocking driver** architecture. This would ensure compatibility with current sensor/display crates and allow stable integration.
+2. Wait for or contribute to the development of **async-compatible sensor drivers** that fully support the `embedded-hal-async` traits.
+3. Explore using **separate microcontrollers** for sensors and display, communicating via UART or SPI to a central processor, to bypass I2C bus conflicts (not ideal given time constraints).
+4. Use a **manual I2C multiplexer** or addressable switching to reduce concurrent bus contention—though this adds complexity.
+    
+
+Given the time limitations, solution (1) is the most practical short-term fix.
+
+### **d. Conclusion**
+
+The objective this week was to **assemble all hardware and software components** into a single functioning system. While each module worked individually, we faced major compatibility issues between **async I2C (Embassy)** and **blocking-based sensor/display drivers**. These mismatches prevented us from running all devices concurrently.
+
+This highlighted a current limitation in the embedded Rust ecosystem: **limited async driver support** for common peripherals. As a result, our conclusion is that the **Embassy framework is not yet mature enough** for full system integration using the available crates.
+
+Next steps will involve:
+
+- Refactoring the system to use blocking `esp-hal` drivers
+- Gradually reintroducing features once a working baseline is confirmed
+- Continuing to monitor the development of async-compatible libraries for future upgrades
 
 ## Week 12: Assemble Together 2. Report 1. Testing 1
 
