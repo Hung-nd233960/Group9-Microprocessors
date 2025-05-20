@@ -57,7 +57,7 @@ If you want to view images or any local content referenced in the handbook, make
 
 #### d. Conclusion
 
-## Week 2: Ideas and Vision (NOT WORKING YET)
+## Week 2: Ideas and Vision (NOT DONE)
 
 #### Date: Mar 10, 2025
 
