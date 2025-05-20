@@ -39,8 +39,8 @@ If you want to view images or any local content referenced in the handbook, make
 - [Week 14: Report 3 and Conclusion](#week-14-report-3-and-conclusion)
 
 
-# Phase 1: Preparation
-## Week 1: Team-Forming, Workflow and Topic
+# Phase 1: Preparation 
+## Week 1: Team-Forming, Workflow and Topic (NOT WORKING YET)
 
 ### Date: Mar 03, 2025
 
@@ -57,10 +57,17 @@ If you want to view images or any local content referenced in the handbook, make
 
 #### d. Conclusion
 
-## Week 2: Ideas and Vision
+## Week 2: Ideas and Vision (NOT WORKING YET)
+
 #### Date: Mar 10, 2025
 
-## Week 3: Rust Basics 1
+#### a. Ideas and Vision
+
+
+#### b. Conclusion
+
+
+## Week 3: Rust Basics 1 (DONE)
 #### Date: Mar 17, 2025
 
 #### Task: Learn the basics of Rust. Part 1: The Basics
@@ -80,10 +87,36 @@ The task for the week is to:
 
 Please document everything you done, even the installation of Rust, environment
 
-#### b. Conclusion:
+### **b. Conclusion**
+
+This first week of learning Rust laid the essential groundwork for understanding its syntax, tooling, and core programming model. Starting from environment setup to writing basic programs, we gained hands-on familiarity with Rust's development workflow.
+
+We began by **installing the Rust toolchain** using `rustup`, configuring the environment, and integrating it with **VSCode**. The extensions `rust-analyzer`, `crates`, and `CodeLLDB` provided a smooth and powerful development experience, with features such as type hints, code navigation, and debugging.
+
+Through building a **command-line guessing game**, we applied key Rust concepts including:
+
+- **Variable binding and mutability**
+- **Primitive data types and type inference**
+- **Function definitions and control flow (if, loop, match)**
+- **Use of external crates** (`rand`) and basic input/output with `std::io`
+    
+This simple project reinforced the structure of a typical Rust program and introduced how **Cargo** manages project scaffolding, dependencies, and builds.
+
+We also conducted a **performance comparison** by implementing a loop that adds numbers up to 1 million in **C**, **Rust**, and **Python**. The results highlighted:
+
+- **C and Rust** achieving similar performance due to their compiled, low-level nature.
+- **Python** being significantly slower, reinforcing Rust’s potential in performance-critical applications with safer memory handling than C.
+
+Overall, Rust’s unique value was clearly demonstrated:
+
+- It provides **C-like performance** while enforcing **memory safety** through ownership and borrowing.
+- Its tooling and compiler are exceptionally helpful for catching bugs early.
+- The language is **well-suited for both systems programming and high-level application logic**.
+    
+In summary, this week built a strong foundation in Rust, showing how it combines modern programming ergonomics with low-level control and safety. These core concepts will be expanded upon in future tasks involving embedded systems, hardware abstraction, and asynchronous programming.
 
 More details in the file [Rust_01](Resources/Rust_01.md)
-## Week 4: Rust Basics 2
+## Week 4: Rust Basics 2 (DONE)
 
 #### Date:  Mar 24, 2025
 
@@ -115,8 +148,18 @@ In researching concurrency in Rust, you should understand:
 Your task is to note down what you have learned.
 #### c. Conclusion
 
+We have learned the core idea of Rust: **Ownership**. Ownership is the foundation of Rust’s memory safety guarantees, enabling it to manage memory without a garbage collector. By enforcing that each value has a single owner and using the borrow checker to manage references, Rust prevents common bugs like use-after-free, double-free, and data races at **compile time**.
+
+Through exploring the ownership system, we gained insights into how memory is structured in the stack and heap, how borrowing and references work, and how aliasing and mutation are tightly controlled to ensure safe and predictable behavior. Concepts like slices, which are borrowed views into collections, further demonstrate Rust’s balance between safety and flexibility.
+
+In the context of **concurrency**, Rust leverages this same ownership model to ensure **race-free, memory-safe multithreading**. Unlike other languages that rely on runtime checks and locks, Rust ensures thread safety through its type system and traits like `Send` and `Sync`. This guarantees that data cannot be shared unsafely across threads.
+
+Additionally, Rust’s **async/await model** provides an efficient and safe way to perform non-blocking I/O, ideal for applications where performance matters and system resources are constrained. With runtimes like **Tokio**, developers can write highly concurrent applications with minimal overhead, all while benefiting from Rust’s safety guarantees.
+
+In conclusion, Rust’s unique combination of **ownership, borrowing, and type-driven concurrency** makes it a powerful language for writing **safe, efficient, and scalable** systems. Understanding these principles is key to mastering Rust and unlocking its full potential.
+
 More details in the file [Rust_02](Resources/Rust_02.md)
-## Week 5: Rust Embedded 1: esp-hal, no-std
+## Week 5: Rust Embedded 1: esp-hal, no-std (NO REPORT YET)
 #### Date: Mar 31, 2025
 
 #### a. Overall Development Solutions for ESP
@@ -143,7 +186,31 @@ Your task is to:
 - Showing how to setup environment for esp-hal development, you should show how to include to Cargo, how to set up new projects with esp-generate and flash with espflash, cargo espflash workflow.
 #### c. Conclusion
 
- Given project complexity and limitation of time, effort. Development no-std with esp-hal is chosen as the framework for the project.
+ Given the project’s complexity and the limitations in time and development effort, **Rust’s no-std approach with `esp-hal` has been selected as the framework** for implementation. This choice is grounded in a careful evaluation of available tools, safety guarantees, and maintainability.
+
+Rust offers several key advantages in embedded development:
+
+- **Memory safety without a garbage collector**: Critical for microcontrollers with limited resources.
+- **Zero-cost abstractions**: You get high-level syntax without runtime overhead.
+- **Strong type system and ownership model**: Prevents common bugs at compile time, including null dereferencing, data races, and buffer overflows.
+- **Excellent tooling**: Rust’s build system (`cargo`), formatter (`rustfmt`), and linter (`clippy`) integrate well with embedded workflows.
+    
+We explored two approaches in the Rust embedded ecosystem:
+
+- The **native HAL** (`esp-hal`), which is built entirely in Rust and targets bare-metal, no-std environments.
+- The **ESP-IDF wrapper** (`esp-idf-sys`, `esp-idf-hal`), which binds to the C-based ESP-IDF SDK and offers more out-of-the-box functionality, but at the cost of increased setup complexity and reliance on external toolchains.
+
+While the wrapper approach provides broader support for ESP32 peripherals and network stacks, it also introduces more dependencies, larger binary sizes, and less control over low-level details — which can be a hindrance in time-constrained or resource-sensitive projects.
+
+By contrast, `esp-hal` supports direct access to hardware with:
+
+- Full control over startup code, peripherals, and memory layout.
+- Simplified build pipeline with `espflash` and `esp-generate`.
+- A purely Rust-based workflow, reducing reliance on external C toolchains.
+
+Given the project’s need for **tight control, minimal runtime overhead**, and a **focused development process**, the no-std `esp-hal` approach strikes the best balance between performance, safety, and simplicity. It allows us to develop safe and predictable embedded software in Rust, without sacrificing control or bloating the toolchain.
+
+Thus, **`esp-hal` is the recommended foundation for this project**, with the confidence that Rust’s safety and performance guarantees will carry through even in low-level, resource-constrained environments.
 
 More details is in the file [Rust_Embed_01](Resources/Rust_Embed_01.md)
 ## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics
@@ -159,9 +226,11 @@ Your task is to:
 
 #### c. Conclusion
 
-More details is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
 
-## Week 7: Serial Communication Protocols: I2C, SPI, UART
+More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
+Tips for soldering is in the file [Soldering](Resources/Soldering.md)
+
+## Week 7: Serial Communication Protocols: I2C, SPI, UART.
 
 ### Date: Apr 14, 2025
 
@@ -199,7 +268,7 @@ By the end of the week, you should have a clear top-down plan of your system—h
 
 More details is in the file [System_Design_01](Resources/System_Design_01)
 
-## Week 9: Sensors: MAX30102, MPU6050
+## Week 9: Sensors: MAX30102, MPU6050, Lab Work 2 (DONE)
 
 ### Date: Apr 28, 2025
 
@@ -217,8 +286,27 @@ Your task is to:
 Extend your system diagrams to include sensor data flow and processing stages. Document your signal processing steps and update your FSMs to include sensor-driven state transitions.
 #### Conclusion
 
-More details is in the file [Sensors](Resources/Sensors)
-## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306
+This week focused on bridging the gap between digital computation and the physical world by integrating real-time **sensor data** into our embedded system. By working with the **MAX30102** and **MPU6050**, we gained practical experience in sensor communication via **I2C**, signal interpretation, and real-world data processing.
+
+The **MAX30102** sensor provided valuable physiological data—specifically, IR and red light absorption values used for **heart rate and SpO₂ estimation**. Using the `max3010x` Rust crate, we were able to initiate the sensor, configure its sampling parameters, and read raw data frames. This allowed us to begin prototyping basic **signal filtering and pulse detection algorithms**, which are crucial for deriving meaningful biometric insights.
+
+The **MPU6050** provided motion data by combining a 3-axis accelerometer and 3-axis gyroscope. With the `mpu6050` crate, we successfully read and interpreted acceleration and angular velocity data. We began experimenting with **scaling factors**, orientation estimation, and **noise filtering**, preparing the system for responsive behaviors based on motion.
+
+Both sensors were integrated via I2C, with successful communication verified through **serial output logging**. This real-time data stream not only validated sensor integration but also served as the foundation for **signal visualization and debugging**.
+
+From a systems perspective:
+
+- We extended the **architecture diagrams** to reflect the new **sensor input and processing pipelines**.
+- We updated our **finite state machines (FSMs)** to incorporate **sensor-driven transitions**, such as moving into an “active” or “alert” state based on detected movement or heart rate anomalies.
+- We explored potential **signal processing techniques**—including **Kalman filtering**—to smooth noisy sensor data and enable robust, real-time decisions.
+    
+In summary, this week solidified the sensor layer of the system.
+
+Also, a lab work investigating I2C signal with Ocilloscopes is being done. 
+
+More details is in the file [Sensors](Resources/Sensors), [Kalman](Resources/Kalman.md)
+
+## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306  (DONE)
 
 ### Date: May 05, 2025
 
@@ -239,7 +327,49 @@ Your task is to:
 - Integrate the **SSD1306** OLED display: initialize over I2C, draw text and graphics, and build a reusable screen abstraction.
 #### c. Conclusion
 
-More details is in the file [Controller](Resources/controller.md)
+Through exploration of the **ESP32-C3**, **ESP32-C6**, and **SSD1306 OLED display**, we gained experience in embedded hardware, display rendering, and system-level design.
+
+#### ESP32-C3 vs ESP32-C6
+
+We examined and worked hands-on with two modern **RISC-V-based** Espressif microcontrollers:
+
+- **ESP32-C3**: Single-core RISC-V with Wi-Fi and BLE 5.0, good community support, and mature `esp-hal` crates.
+- **ESP32-C6**: Dual-mode Wi-Fi 6 + BLE 5.2, support for **802.15.4 (Thread/Zigbee)**, and more advanced peripherals—but with less Rust ecosystem maturity as of now.
+    
+We compared them in terms of:
+
+- **Core architecture and performance**
+- **Peripheral support (I2C/SPI/UART availability)**
+- **Power consumption**
+- **Async support with Embassy (C3 is currently more compatible)**
+    
+Rust firmware was successfully flashed using `espflash`, and we created a **minimal embedded application**:
+
+- Blinking an on-board LED
+- Logging debug output over serial (via `defmt`)
+- Initializing I2C for display/sensor communication
+
+From this exploration, **ESP32-C3** was selected as the better fit for the current project scope due to better tooling, community support, and sufficient features for sensor + display integration.
+
+#### SSD1306 OLED Display and Display Abstractions
+
+The **SSD1306** display, interfaced via I2C, was initialized using the `ssd1306` Rust crate. We learned how the display uses a **framebuffer model (Buffered Graphics)**, allowing drawing to a RAM buffer before flushing it to the screen. This avoids flickering and enables rich visuals.
+
+We leveraged **`embedded-graphics`**, a core Rust crate for rendering shapes, text, and images across many types of displays. It provided:
+
+- Primitives like lines, rectangles, circles
+- Text rendering with custom fonts
+- Layout abstractions for reusable UI elements
+
+We built a **reusable display module** that:
+
+- Shows system states (e.g., idle, error, active)
+- Displays live sensor data (heart rate, motion)
+- Uses screen clearing, buffer flushing, and conditional drawing to control what the user sees
+
+The **FSMs** were extended to include **display feedback per state**, enabling the device to visually respond to both internal and environmental changes.
+
+More details is in the file [Controller](Resources/Controller.md)
 # Phase 3: Report and Testing
 
 ## Week 11: Assemble Together 1. Lab Work 2

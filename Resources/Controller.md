@@ -1,5 +1,5 @@
 # Components (MCUs and Display Screen)
-## ESP32C3 Supermini
+## ESP32C3 SuperMini
 ### General Description
 The ESP32-C3 Super Mini is a compact and versatile development board powered by the ESP32-C3 microcontroller. It offers robust Wi-Fi and Bluetooth Low Energy (BLE) connectivity, making it ideal for IoT, smart devices, and wireless sensor networks.
 
@@ -47,9 +47,9 @@ Key Notes:
 - GPIO9: Connected to the BOOT button.
 - JTAG Support: GPIO4–GPIO7 pins are reserved for debugging.
 
-## ESP32-C6 Mini
+## ESP32-C6
 
-The **ESP32-C6 Mini** is a compact development board based on the **ESP32-C6** microcontroller. It features a powerful 32-bit RISC-V single-core CPU with advanced wireless connectivity including Wi-Fi 6 and Bluetooth 5.0 LE, making it highly suitable for next-gen IoT applications, smart home devices, and secure edge computing.
+The **ESP32-C6** is a compact development board based on the **ESP32-C6** microcontroller. It features a powerful 32-bit RISC-V single-core CPU with advanced wireless connectivity including Wi-Fi 6 and Bluetooth 5.0 LE, making it highly suitable for next-gen IoT applications, smart home devices, and secure edge computing.
 
 Key features include:
 
