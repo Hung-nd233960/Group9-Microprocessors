@@ -1,4 +1,4 @@
-# **OxyRem vs. Commercial Devices**  
+### **OxyRem vs. Commercial Devices**  
 
 | **Feature**                      | **OxyRem**                                    | **Xiaomi Mi Band 9**           | **Apple Watch Series 9**                   | **Masimo MightySat (Medical-Grade)**        |
 | -------------------------------- | --------------------------------------------- | ------------------------------ | ------------------------------------------ | ------------------------------------------- |
@@ -12,7 +12,7 @@
 | **Security**                     | ✅ High (encrypted, privacy-focused)           | ⚠️ Basic (data shared with app) | ❌ Medium (integrated with Apple ecosystem) | ✅ High (hospital-grade)                     |
 | **Cost**                         | ✅ <$30 (affordable for all)                   | ➖ ~$50-55                      | ❌ $399+ (premium pricing)                  | ❌ $250+ (for hospitals & professionals)     |
 
-## **What Makes OxyRem Stand Out?**  
+### **What Makes OxyRem Stand Out?**  
 
 - ✅ **Affordable & focused on critical health tracking** – Unlike smartwatches that include extra (and sometimes unnecessary) features.  
 - ✅ **Emergency alarm system** – A **life-saving function** that fitness trackers and even some medical-grade devices lack.  
