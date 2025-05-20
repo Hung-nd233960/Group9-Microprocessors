@@ -295,4 +295,18 @@ To display text or draw images on the OLED display, we will use the embedded_gra
 
 You can use this crate with various OLED displays and drivers when working with different types of OLED modules. The documentation provides a detailed explanation of the features and supported drivers. I recommend going through it.
 
+### Try print something on Oled screen
+
+![alt text](images-Sensors-Controller/image-53.png)
+
+### Try draw something 
+
+
+
+### Using Multiple Bytes to Represent Wider Pixel Widths
+
+
+
+### Using Bitmap Image file
+
 

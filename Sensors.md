@@ -367,15 +367,180 @@ Test case :
 ![alt text](images-Sensors-Controller/image-12.png)
 ![alt text](images-Sensors-Controller/image-13.png)
 
+
+### Register Maps and Descriptions 
+
+![alt text](images-Sensors-Controller/image-48.png)
+
+![alt text](images-Sensors-Controller/image-49.png)
+
+### Detailed Explaination for each part of register maps
+
+#### Interrupt Status (0x00–0x01)
+
+Whenever an interrupt is triggered, the MAX30102 pulls the active-low interrupt pin (INT pin) into its low state until the interrupt is cleared.
+
+- A_FULL: FIFO Almost Full Flag
+In SpO2 and HR modes, this interrupt triggers when the FIFO write pointer has a certain number of free spaces remaining. 
+The trigger number can be set by the FIFO_A_FULL[3:0] register. The interrupt is cleared by reading the Interrupt Status 1 register (0x00).
+- PPG_RDY: New FIFO Data Ready
+In SpO2 and HR modes, this interrupt triggers when there is a new sample in the data FIFO. The interrupt is cleared by reading the Interrupt Status 1 register (0x00), or by reading the FIFO_DATA register.
+- ALC_OVF: Ambient Light Cancellation Overflow
+This interrupt triggers when the ambient light cancellation function of the SpO2/HR photodiode has reached its maximum limit, and therefore, ambient light is affecting the output of the ADC. The interrupt is cleared by reading the Interrupt Status 1 register (0x00).
+- PWR_RDY: Power Ready Flag
+On power-up or after a brownout condition, when the supply voltage VDD transitions from below the undervoltage lockout (UVLO) voltage to above the UVLO voltage, a power-ready interrupt is triggered to signal that the module is powered-up and ready to collect data.
+- DIE_TEMP_RDY: Internal Temperature Ready Flag
+When an internal die temperature conversion is finished, this interrupt is triggered so the processor can read the temperature data registers. The interrupt is cleared by reading either the Interrupt Status 2 register (0x01) or the TFRAC register (0x20).
+
+The interrupts are cleared whenever the interrupt status register is read, or when the register that triggered the interrupt is read. For example, if the SpO2 sensor triggers an interrupt due to finishing a conversion, reading either the FIFO data register or the interrupt register clears the interrupt pin (which returns to its normal HIGH state). This also clears all the bits in the interrupt status register to zero.
+
+#### Interrupt Enable (0x02-0x03)
+
+Each source of hardware interrupt, with the exception of power ready, can be disabled in a software register within the MAX30102 IC.
+
+####  FIFO (0x04–0x07)
+
+- FIFO Write Pointer 
+The FIFO Write Pointer points to the location where the MAX30102 writes the next sample. This pointer advances for each sample pushed on to the FIFO.
+
+- FIFO Overflow Counter
+When the FIFO is full, samples are not pushed on to the FIFO, samples are lost. OVF_COUNTER counts the number of samples lost. It saturates at 0x1F. When a complete sample is “popped” from the FIFO OVF_COUNTER is reset to zero.
+
+- FIFO Read Pointer
+The FIFO Read Pointer points to the location from where the processor gets the next sample from the FIFO through the I2C interface. This advances each time a sample is popped from the FIFO. The processor can also write to this pointer after reading the samples to allow rereading samples from the FIFO if there is a data communication error.
+
+-  FIFO Data Register
+FIFO (First-In, First-Out) is a buffer memory used to store ADC samples of sensors (heart rate, SpO2) before the microcontroller reads them. It helps ensure no data is lost during high-speed sampling.
+
+- FIFO Capacity and Structure
+The FIFO can hold up to 32 samples.
+
+Each sample consists of:
+
+  - 3 bytes per channel (e.g. IR or RED).
+
+  - So:
+
+    - IR only: 3 bytes per sample
+
+    - IR + RED: 6 bytes per sample
+
+- Total capacity: 32 samples × 6 bytes = 192 bytes
+
+- FIFO-Related Registers
+
+| Register      | Address | Description                |
+| ------------- | ------- | -------------------------- |
+| `FIFO_WR_PTR` | 0x04    | Write pointer (next write) |
+| `OVF_COUNTER` | 0x05    | Overflow counter           |
+| `FIFO_RD_PTR` | 0x06    | Read pointer (next read)   |
+| `FIFO_DATA`   | 0x07    | FIFO data register         |
+
+💡 You should only manually write to FIFO_RD_PTR to reset the FIFO. The other registers are managed automatically by the sensor.
+
+- Reading Data from FIFO
+
+Data is read from register 0x07 (FIFO_DATA).
+
+Each read gives 1 byte of data.
+
+You must read multiple bytes to get one full sample:
+
+6 bytes per sample (if IR + RED are enabled)
+
+- Reading Multiple Samples
+
+If there are 5 samples in the FIFO (each 6 bytes), you need to read 30 bytes => Read 30 bytes in a burst to get all 5 samples.
+
+### Understanding FIFO Data Structure of MAX30102
+
+![alt text](images-Sensors-Controller/image-50.png)
+
+![alt text](images-Sensors-Controller/image-51.png)
+
+![alt text](images-Sensors-Controller/image-52.png)
+
+#### 1. What is FIFO "Left-Justified"?
+
+The data from the ADC (Analog-to-Digital Converter) is stored in the FIFO register using a **left-justified format**, which means:
+
+- The **most significant bit (MSB)** is always at a fixed position: `FIFO_DATA[17]`.
+- The remaining bits are filled from **left to right**.
+- If the ADC resolution is lower than 18 bits, the **least significant bits (LSBs)** are padded with zeros.
+
+##### ADC Resolution vs FIFO Bits Mapping:
+
+| ADC Resolution | FIFO_DATA[17] → FIFO_DATA[0]                      |
+|----------------|---------------------------------------------------|
+| **18-bit**     | Full data from bit 17 to bit 0                    |
+| **17-bit**     | Bits 17 down to 1 are used; bit 0 is 0-padded     |
+| **16-bit**     | Bits 17 to 2 are used; bits 1 and 0 are 0         |
+| **15-bit**     | Bits 17 to 3 are used; bits 2 to 0 are 0          |
+
+---
+
+#### 2. Structure of Each FIFO Sample (18-bit)
+
+Each ADC sample is represented using **3 bytes**, equivalent to 18 bits.
+
+##### Byte Layout (based on FIFO_DATA[x]):
+
+```
+Byte 1: [6 unused bits][FIFO_DATA[17]][FIFO_DATA[16]]
+Byte 2: [FIFO_DATA[15] ... FIFO_DATA[8]]
+Byte 3: [FIFO_DATA[7] ... FIFO_DATA[0]]
+```
+
+> Note: The first 6 bits of Byte 1 are unused or irrelevant.
+
+##### Combining the Bytes into One Sample:
+
+> Remove the top 6 unused bits after combining 3 bytes.
+
+---
+
+#### 3. Bytes per Sample
+
+- Each **channel** (IR or RED) uses **3 bytes** per sample.
+- In **SpO2 or HR mode**, both channels are enabled, so:
+  - One sample = **6 bytes**: 3 bytes for IR + 3 bytes for RED
+
+---
+
+#### 4. FIFO Pointers (Write Pointer & Read Pointer)
+
+- **Write Pointer** (`0x04`): Increments when a new sample is written to FIFO.
+- **Read Pointer** (`0x06`): Increments when you read a sample from FIFO.
+
+##### Important Notes:
+
+- When switching to HR or SpO2 mode, it's important to **reset both pointers to 0x00** to avoid reading outdated data.
+- If you want to **read old data again**, you can manually **decrement the Read Pointer**.
+
+---
+
+#### 5. Summary
+
+| Component             | Description                                                  |
+|----------------------|--------------------------------------------------------------|
+| FIFO Left-Justified  | MSB is fixed on the left; LSBs are zero-padded if unused     |
+| Sample Size (SpO2)   | 6 bytes: 3 for IR, 3 for RED                                 |
+| Byte 1               | Contains FIFO_DATA[17:16] and 6 unused bits                  |
+| FIFO Pointers        | Auto-increment; must be reset when switching modes          |
 ### Detailed I2C Compatible Interface Timing Tiagram 
+
 ![alt text](images-Sensors-Controller/image-23.png)
-- To understand it , read below 
+
+- To understand it , read below and Electrical Characteristics part to understand parameters . 
+
 ## Understand the I2C Protocol
 - The I2C protocol also known as the two wire interface is a simple serial communication protocol that uses just two pins of a microcontroller namely SCL (serial clock) and SDA (serial data). This is a very popular protocol that can be used to address a large number of slave devices that are connected to the same bus. This protocol comes in handy when there is scarcity of available pins in the microcontroller. Each slave device has a slave address or a name for which they respond. This is usually a 7-bit binary number. Once a master sends a valid slave address, that slave alone will respond to the master’s queries and all other slaves will ignore any conversation between the master and that particular slave.
 
 - There are a number of conditions that can be made over the I2C bus such as start and stop sequence. The data line does not change when the clock line is HIGH. If the data line changes when the clock line is High, the slave device interprets it as a command and not as data. This is the only feature in the interface that puts a distinct line between the command and data.
 ### I2C General Protocol Timing Diagram
+
 ![alt text](images-Sensors-Controller/image-14.png)
+
 ### Understanding the Start and Stop sequence of I2C Protocol
 - The timing diagram above has the start sequence shown in the dotted box to the left. Here if you notice the data line SDA is having a High to Low transition when the clock line SCL is HIGH. Under normal circumstances this does not happen as you can see in the subsequent clock pulses that the data line is stable in one state, either HIGH or LOW when the clock line is HIGH. Similarly to the right most side of the diagram you will find another dotted box with the stop sequence (see the one with the solid line inside the box). The data line experiences a LOW to HIGH transition when the clock line is HIGH.
 
@@ -385,14 +550,22 @@ Test case :
 - The I2C protocol is quiet easy to understand. The working of the protocol is illustrated in the following content,
 
 - The rule of thumb is that every time the slave devices experiences Start sequence it expects a 7-bit slave address along with a read/write specifier in the MSB (0 - for write and 1 - read). If the specifier is set to write then the next data written will be the address to the register to which the consecutive data is to be written. The device automatically increments the register pointer after a success full write. On the other hand if the specifier is set to read then the incoming data from the bus will return the value of the register to which the stack pointer was last pointing to and the consecutive registers following it.
+
 ### Sequentially write data to a slave device with I2C Protocol
+
 - Here, the slave address with the write specifier is sent after the Start sequence. The slave sends an Acknowledge to the master (MCU). Then the next byte of data written to the slave device is the address of the register to write to. Following this there can be any number of sequential write operations with slave sending Acknowledge after every byte of data written to the register starting from the register specified by the address and sequentially moving up after each write operation. This can be terminated by sending a Stop sequence.
 ![alt text](images-Sensors-Controller/image-15.png)
+
 ### Sequentially read data from a slave device with I2C Protocol
+
 - Initially the slave address with the read specifier is sent after the Start sequence. The Slave sends an Acknowledge to the MCU. Following this there can be any number of sequential read operations with master(MCU) sending Acknowledge after every byte of data read from the register last written in the write operation (since, address of the register to read from is not specified here). This sequential read can be stopped by sending a Not Acknowledge signal followed by a Stop sequence
+
 ![alt text](images-Sensors-Controller/image-16.png)
+
 ### Sequentially read and write data as a combination of the above two methods
+
 - This process is just a mixture of both the sequential read and sequential write methods. Initially the slave address with the write specifier is sent after the Start sequence. Then the next data to be written will be the address of the register in the slave device over which the operation is going to be performed. Once this is done a repeated start sequence is made and and the 7-bit slave address with the read specifier is transmitted. Following this there can be any number of sequential reads from the register address specified in the previous step along with all the registers that follow it. The register address is automatically incremented by the device. The sequential read will involve the master (MCU) sending an Acknowledge to the slave after every byte of data read. The repeated read process can be stopped by sending a Not Acknowledge signal followed by a stop sequence.
+
 ![alt text](images-Sensors-Controller/image-17.png)
 
 ### Using Oscilloscope to read I2C 
@@ -404,7 +577,7 @@ Test case :
 - Then the sensor sent ACK to MCU to confirm , then the MCU send the sensor's address followed by bit 1 to access the sensor => convert to read mode : access register address 0x06 (FIFO Read Pointer)
 - Finally , it read again 0x57 (I2C adress) and 0x07 (FIFO Data Register) and the sensor now started streaming data to the MCU .
 ![alt text](images-Sensors-Controller/image-22.png)
-- Each result takes 4 bytes of data . 
+- Each result takes 3 bytes of data . 
 
 ## MPU6050 
 ### General Description 
