@@ -302,7 +302,7 @@ From a systems perspective:
     
 In summary, this week solidified the sensor layer of the system.
 
-Also, a lab work investigating I2C signal with Ocilloscopes is being done. 
+Also, a lab work investigating I2C signal with Ocilloscopes is being done.
 
 More details is in the file [Sensors](Resources/Sensors), [Kalman](Resources/Kalman.md)
 
