@@ -573,8 +573,8 @@ Byte 3: [FIFO_DATA[7] ... FIFO_DATA[0]]
 - The yellow line is the SCL signal , the blue line is the SDA signal
 ![alt text](images-Sensors-Controller/image-21.png)
 - 57 is the I2C address of MAX30102 , in hexadecimal form (in binary it is 1010111 - see correspondingly in the image)
-- After that , SDA got 00 , it was the Write specifier and ACK signal . Then it wrote 0000100 to choose the address of the register 0x04 (FIFO Write Pointer)
-- Then the sensor sent ACK to MCU to confirm , then the MCU send the sensor's address followed by bit 1 to access the sensor => convert to read mode : access register address 0x06 (FIFO Read Pointer)
+- After that , SDA got 00 , it was the Write specifier and ACK signal . Then it wrote 0000100 to choose the address of the register 0x04 (FIFO Write Pointer) 
+- Then the sensor sent ACK to MCU to confirm , then the MCU send the sensor's address followed by bit 1 to access the sensor => convert to read mode : access register address 0x06 (FIFO Read Pointer) => points to the next address which is about to get data in the FIFO Data Register 
 - Finally , it read again 0x57 (I2C adress) and 0x07 (FIFO Data Register) and the sensor now started streaming data to the MCU .
 ![alt text](images-Sensors-Controller/image-22.png)
 - Each result takes 3 bytes of data . 

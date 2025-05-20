@@ -301,12 +301,9 @@ You can use this crate with various OLED displays and drivers when working with 
 
 ### Try draw something 
 
-
-
-### Using Multiple Bytes to Represent Wider Pixel Widths
-
-
+![alt text](images-Sensors-Controller/image-54.png)
 
 ### Using Bitmap Image file
 
+![alt text](images-Sensors-Controller/image-55.png)
 
