@@ -169,8 +169,8 @@ Additionally, Rust’s **async/await model** provides an efficient and safe way 
 In conclusion, Rust’s unique combination of **ownership, borrowing, and type-driven concurrency** makes it a powerful language for writing **safe, efficient, and scalable** systems. Understanding these principles is key to mastering Rust and unlocking its full potential.
 
 More details in the file [Rust_02](Resources/Rust_02.md)
-## Week 5: Rust Embedded 1: esp-hal, no-std (NO REPORT YET)
-#### Date: Mar 31, 2025
+## Week 5: Rust Embedded 1: esp-hal, no-std (DONE)
+#### Date: Mar 31, 2025 
 
 #### a. Overall Development Solutions for ESP
 
@@ -223,7 +223,7 @@ Given the project’s need for **tight control, minimal runtime overhead**, and 
 Thus, **`esp-hal` is the recommended foundation for this project**, with the confidence that Rust’s safety and performance guarantees will carry through even in low-level, resource-constrained environments.
 
 More details is in the file [Rust_Embed_01](Resources/Rust_Embed_01.md)
-## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics
+## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics (DONE)
 
 ### Date: Apr 7, 2025
 
@@ -240,7 +240,7 @@ Your task is to:
 More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
 Tips for soldering is in the file [Soldering](Resources/Soldering.md)
 
-## Week 7: Serial Communication Protocols: I2C, SPI, UART.
+## Week 7: Serial Communication Protocols: I2C, SPI, UART. (DONE)
 
 ### Date: Apr 14, 2025
 
