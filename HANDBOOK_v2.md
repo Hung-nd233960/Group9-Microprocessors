@@ -237,7 +237,7 @@ Your task is to:
 #### c. Conclusion
 
 
-More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
+More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02.md)
 Tips for soldering is in the file [Soldering](Resources/Soldering.md)
 
 ## Week 7: Serial Communication Protocols: I2C, SPI, UART. (DONE)
