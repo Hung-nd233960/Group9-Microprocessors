@@ -6,6 +6,7 @@ This handbook serves as a comprehensive guide for the engineering principles, me
 
 The handbook is designed to be read sequentially, but each chapter can also be referenced independently as needed.
 
+
 ## How To Read This Handbook
 
 This handbook is written in Markdown format, which is a lightweight markup language that makes it easy to structure and style text. For an optimal reading experience, it is recommended to use a dedicated Markdown reader such as Obsidian or Visual Studio Code with a Markdown plugin. These tools will provide features like easy navigation, links, and proper rendering of the content.
@@ -57,7 +58,7 @@ If you want to view images or any local content referenced in the handbook, make
 
 #### d. Conclusion
 
-## Week 2: Ideas and Vision (NOT WORKING YET)
+## Week 2: Ideas and Vision (NOT DONE)
 
 #### Date: Mar 10, 2025
 
@@ -74,6 +75,8 @@ This architecture ensures a robust, secure, and user-friendly connection between
 
 Investigation of the topic is in [Investigation](Investigation.md)
 Initial Setup of the system: [Initial_Setup_Idea](Resources/Initial_setup_idea.md)
+For criterion, specifications: [Specifications](Resources/specifications.md)
+In communication specifications: [Connection_Specifications](Resources/connection_specifications.md)
 ## Week 3: Rust Basics 1 (DONE)
 #### Date: Mar 17, 2025
 
@@ -405,7 +408,7 @@ However, **integration issues emerged** when combining I2C devices with the asyn
 
 We were unable to get all components to communicate simultaneously under Embassy-based concurrency.
 
----
+
 
 ### **b. In Hardware**
 
@@ -447,6 +450,9 @@ Next steps will involve:
 ### Date: May 19, 2025
 
 #### a. Report Standards, Preparation
+- Report on SSD1306 is lacking in embedded-graphics description.
+- Please include images on testing and adding code
+- Report on MAX30102 lacking byte address and byte code for each command.
 
 #### b. Preparation
 
