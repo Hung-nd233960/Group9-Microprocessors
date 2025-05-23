@@ -1,10 +1,10 @@
 [package]
 edition = "2021"
-name    = "test-async"
+name    = "max3010x-esp32c6"
 version = "0.1.0"
 
 [[bin]]
-name = "test-async"
+name = "max3010x-esp32c6"
 path = "./src/bin/main.rs"
 
 [dependencies]
@@ -15,8 +15,9 @@ esp-alloc        = "0.7.0"
 esp-hal          = { version = "1.0.0-beta.0", features = ["esp32c6", "unstable"] }
 esp-hal-embassy  = { version = "0.7.0", features = ["esp32c6"] }
 static_cell      = { version = "2.1.0", features = ["nightly"] }
-esp-println     = { version = "0.13.1", features = ["esp32c6"] }
-esp-backtrace     = { version = "0.15.1", features = ["esp32c6", "println"]}
+esp-println      = { version = "0.13.1", features = ["esp32c6"] }
+esp-backtrace    = { version = "0.15.1", features = ["esp32c6", "println"]}
+max3010x         = "0.2.0" 
 
 [profile.dev]
 # Rust debug is too slow.

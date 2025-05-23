@@ -408,8 +408,6 @@ However, **integration issues emerged** when combining I2C devices with the asyn
 
 We were unable to get all components to communicate simultaneously under Embassy-based concurrency.
 
-
-
 ### **b. In Hardware**
 
 Hardware setup involved:
