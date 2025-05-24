@@ -1,0 +1,11 @@
+C:\Users\Duy\Documents\Group9-Microprocessors\mpu6050\target\debug\deps\libwinapi_util-15355b3070270547.rmeta: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\console.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\file.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\Duy\Documents\Group9-Microprocessors\mpu6050\target\debug\deps\libwinapi_util-15355b3070270547.rlib: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\console.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\file.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\Duy\Documents\Group9-Microprocessors\mpu6050\target\debug\deps\winapi_util-15355b3070270547.d: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\console.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\file.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\lib.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\console.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\file.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\sysinfo.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\winapi-util-0.1.9\src\win.rs:

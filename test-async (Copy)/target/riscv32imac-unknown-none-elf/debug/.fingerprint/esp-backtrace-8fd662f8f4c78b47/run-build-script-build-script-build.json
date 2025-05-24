@@ -1,0 +1,1 @@
+{"rustc":10895048813736897673,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[15224477046643057480,"build_script_build",false,3071583349510305799],[18236815274318437530,"build_script_build",false,2162831475920952808]],"local":[{"Precalculated":"0.15.1"}],"rustflags":["-C","force-frame-pointers"],"config":0,"compile_kind":0}

@@ -1,0 +1,2 @@
+cargo:rustc-link-arg=--error-handling-script=C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\debug\build\test-async-260aafbce72725b2\build-script-build.exe
+cargo:rustc-link-arg=-Tlinkall.x

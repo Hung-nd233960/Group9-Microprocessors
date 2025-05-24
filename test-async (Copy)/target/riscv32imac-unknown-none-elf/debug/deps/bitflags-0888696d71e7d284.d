@@ -1,0 +1,11 @@
+C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\riscv32imac-unknown-none-elf\debug\deps\libbitflags-0888696d71e7d284.rmeta: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\iter.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\parser.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\traits.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\public.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\internal.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\external.rs
+
+C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\riscv32imac-unknown-none-elf\debug\deps\bitflags-0888696d71e7d284.d: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\iter.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\parser.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\traits.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\public.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\internal.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\external.rs
+
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\lib.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\iter.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\parser.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\traits.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\public.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\internal.rs:
+C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\bitflags-2.9.1\src\external.rs:
