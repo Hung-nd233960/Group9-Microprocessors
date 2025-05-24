@@ -1,3 +1,0 @@
-cargo:rustc-link-search=C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\riscv32imac-unknown-none-elf\debug\build\esp32c6-315dd8e8767ffec4\out
-cargo:rerun-if-changed=device.x
-cargo:rerun-if-changed=build.rs

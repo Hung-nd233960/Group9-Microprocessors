@@ -1,9 +1,0 @@
-C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\riscv32imac-unknown-none-elf\debug\deps\libembedded_io_async-6a4a909d4c3a3900.rmeta: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\mod.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_mut.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_ref.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\../README.md
-
-C:\Users\Duy\Documents\Group9-Microprocessors\test-async (Copy)\target\riscv32imac-unknown-none-elf\debug\deps\embedded_io_async-6a4a909d4c3a3900.d: C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\lib.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\mod.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_mut.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_ref.rs C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\../README.md
-
-C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\lib.rs:
-C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\mod.rs:
-C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_mut.rs:
-C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\impls\slice_ref.rs:
-C:\Users\Duy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\embedded-io-async-0.6.1\src\../README.md:
