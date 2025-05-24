@@ -194,7 +194,6 @@ async fn main(_spawner: Spawner) {
 * Delay is async and non-blocking using `Timer::after`.
 
 Result is the same as version without `embassy`
-<video src="Resources/Videos/blinky.mp4" width="480" height="320" controls></video>
 
 ## 5. Diving Deeper: Embassy Features
 
@@ -412,5 +411,5 @@ esp_println::println!("Debug info: {}");
 ## 7. The result:
 ![image](Images/hello.png)
 
-## 8. Soldering techniques
-Soldering techiniques is a skill we have learn from the begin of semester. For more information and advices, read the [Soldering tecniques](ky_thuat_han.md)
+## 8. Soldering Techniques
+This skill we have learned from the begin of semester, for more detail, please read [Soldering Techniques](ky_thuat_han.md)

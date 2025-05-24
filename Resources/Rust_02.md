@@ -130,7 +130,7 @@ fn makes_copy(some_integer: i32) { // some_integer comes into scope
 } // Here, some_integer goes out of scope. Nothing special happens.
 ```
 **The Result:**
-![image](ownership.png)
+![image](Images/ownership.png)
 
 ### References and Borrowing
 In Rust, instead of transferring ownership every time, we can **borrow** a value using **references**.
@@ -160,7 +160,7 @@ fn calculate_length(s: &String) -> usize {
     s.len()
 }
 ```
-![image](borrowing.png)
+![image](Images/borrowing.png)
 
 * `&s` is a reference.
 * Function borrows `s` — **no ownership is taken**.
@@ -181,7 +181,7 @@ fn main() {
     println!("{s}");
 }
 ```
-![image](borrowing2.png)
+![image](Images/borrowing2.png)
 * `&mut s` means we’re **borrowing s mutably**.
 * Only **one mutable reference** allowed at a time!
 
@@ -198,7 +198,7 @@ fn main() {
     println!("{r1}, {r2}, {r3}");
 }
 ```
-![image](borrowing3.png)
+![image](Images/borrowing3.png)
 * You can have **multiple `&` immutable references**, but:
 * **No `&mut` mutable reference is allowed at the same time**.
 
@@ -216,7 +216,7 @@ fn main() {
     r2.push_str(", world");
 }
 ```
-![image](borrowing4.png)
+![image](Images/borrowing4.png)
 
 * After `r1` is used, it's no longer active.
 * So `r2` can safely borrow mutably.
@@ -255,7 +255,7 @@ fn main() {
     println!("{hello}, {world}"); // prints: hello, world
 }
 ```
-![image](slice1.png)
+![image](Images/slice1.png)
 * `&s[0..5]` means: borrow part of the string — from byte 0 up to, but not including, byte 5.
 * This doesn’t copy the data, just creates a reference.
 
@@ -296,7 +296,7 @@ fn main() {
     }
 }
 ```
-![image](slice2.png)
+![image](images/slice2.png)
 * Works the same as string slices, but for arrays.
 
 **Safety: Indexing Must Be In Bounds**
@@ -331,7 +331,7 @@ let word = first_word(&s);
 
 println!("{word}"); // prints: hello
 ```
-![image](slice3.png)
+![image](Images/slice3.png)
 
 We can see that with slice, there is:
 * No copying.
@@ -660,7 +660,7 @@ fn main() {
     });
 }
 ```
-![image](async1.png)
+![image](Images/async1.png)
 This code runs two loops at the same time. Each prints messages with a 0.5-second pause between them.
 
 **Waiting for the First Task to Finish**

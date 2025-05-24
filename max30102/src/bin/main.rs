@@ -5,7 +5,9 @@ use esp_backtrace as _;
 use esp_hal::{delay::Delay , prelude::*};
 use esp_hal::i2c::I2c;
 use esp_hal::gpio::Io;
+use esp_hal::timer::systimer::SystemTimer;
 use max3010x::{Max3010x, Led, SampleAveraging};
+use embassy_time::{Instant, Duration, Timer};
 
 extern crate alloc;
 use core::mem::MaybeUninit;
@@ -39,6 +41,8 @@ fn main() -> ! {
         io.pins.gpio9, // SCL
         400_u32.kHz(),
     );
+    let timer0 = SystemTimer::new(peripherals.SYSTIMER);
+    esp_hal_embassy::init(timer0.alarm0);
 
     let max3010x = Max3010x::new_max30102(i2c);
     let mut sensor = max3010x.into_heart_rate().unwrap();

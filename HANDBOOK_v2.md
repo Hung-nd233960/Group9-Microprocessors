@@ -6,6 +6,7 @@ This handbook serves as a comprehensive guide for the engineering principles, me
 
 The handbook is designed to be read sequentially, but each chapter can also be referenced independently as needed.
 
+
 ## How To Read This Handbook
 
 This handbook is written in Markdown format, which is a lightweight markup language that makes it easy to structure and style text. For an optimal reading experience, it is recommended to use a dedicated Markdown reader such as Obsidian or Visual Studio Code with a Markdown plugin. These tools will provide features like easy navigation, links, and proper rendering of the content.
@@ -57,7 +58,7 @@ If you want to view images or any local content referenced in the handbook, make
 
 #### d. Conclusion
 
-## Week 2: Ideas and Vision (NOT WORKING YET)
+## Week 2: Ideas and Vision (NOT DONE)
 
 #### Date: Mar 10, 2025
 
@@ -74,6 +75,8 @@ This architecture ensures a robust, secure, and user-friendly connection between
 
 Investigation of the topic is in [Investigation](Investigation.md)
 Initial Setup of the system: [Initial_Setup_Idea](Resources/Initial_setup_idea.md)
+For criterion, specifications: [Specifications](Resources/specifications.md)
+In communication specifications: [Connection_Specifications](Resources/connection_specifications.md)
 ## Week 3: Rust Basics 1 (DONE)
 #### Date: Mar 17, 2025
 
@@ -166,8 +169,8 @@ Additionally, Rust’s **async/await model** provides an efficient and safe way 
 In conclusion, Rust’s unique combination of **ownership, borrowing, and type-driven concurrency** makes it a powerful language for writing **safe, efficient, and scalable** systems. Understanding these principles is key to mastering Rust and unlocking its full potential.
 
 More details in the file [Rust_02](Resources/Rust_02.md)
-## Week 5: Rust Embedded 1: esp-hal, no-std (NO REPORT YET)
-#### Date: Mar 31, 2025
+## Week 5: Rust Embedded 1: esp-hal, no-std (DONE)
+#### Date: Mar 31, 2025 
 
 #### a. Overall Development Solutions for ESP
 
@@ -220,7 +223,7 @@ Given the project’s need for **tight control, minimal runtime overhead**, and 
 Thus, **`esp-hal` is the recommended foundation for this project**, with the confidence that Rust’s safety and performance guarantees will carry through even in low-level, resource-constrained environments.
 
 More details is in the file [Rust_Embed_01](Resources/Rust_Embed_01.md)
-## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics
+## Week 6: Rust Embedded 2: Embassy Framework + Lab Work 1: Soldering Basics (DONE)
 
 ### Date: Apr 7, 2025
 
@@ -234,10 +237,10 @@ Your task is to:
 #### c. Conclusion
 
 
-More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02)
+More details of Embassy is in the file [Rust_Embed_02](Resources/Rust_Embed_02.md)
 Tips for soldering is in the file [Soldering](Resources/Soldering.md)
 
-## Week 7: Serial Communication Protocols: I2C, SPI, UART.
+## Week 7: Serial Communication Protocols: I2C, SPI, UART. (DONE)
 
 ### Date: Apr 14, 2025
 
@@ -405,8 +408,6 @@ However, **integration issues emerged** when combining I2C devices with the asyn
 
 We were unable to get all components to communicate simultaneously under Embassy-based concurrency.
 
----
-
 ### **b. In Hardware**
 
 Hardware setup involved:
@@ -447,6 +448,9 @@ Next steps will involve:
 ### Date: May 19, 2025
 
 #### a. Report Standards, Preparation
+- Report on SSD1306 is lacking in embedded-graphics description.
+- Please include images on testing and adding code
+- Report on MAX30102 lacking byte address and byte code for each command.
 
 #### b. Preparation
 
