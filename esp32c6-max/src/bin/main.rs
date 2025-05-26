@@ -8,9 +8,8 @@ use esp_println::println;
 use esp_backtrace as _;
 use esp_hal::{clock::CpuClock, time::Rate};
 use max3010x::{Max3010x, Led, SampleAveraging};
-use libm::tanf; // Thêm libm để hỗ trợ hàm tan trong no_std
+use libm::tanf; 
 
-// Định nghĩa hằng số cho bộ lọc
 const SAMPLE_RATE: f32 = 100.0; // Tần số lấy mẫu (Hz), giả định 100 Hz
 const BUFFER_SIZE: usize = 100; // Kích thước bộ đệm cho dữ liệu IR
 
@@ -74,7 +73,7 @@ async fn main(_spawner: Spawner) {
             ir_buffer[buffer_index % BUFFER_SIZE] = ir_value;
             buffer_index = (buffer_index + 1) % BUFFER_SIZE;
 
-            // In dữ liệu thô
+            // In dữ liệu raw thô 
             println!("Sample {}: {:?}", i, data[i as usize]);
 
             // Nếu bộ đệm đầy, áp dụng bộ lọc
