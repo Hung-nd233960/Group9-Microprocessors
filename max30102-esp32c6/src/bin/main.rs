@@ -43,7 +43,7 @@ async fn main(_spawner: Spawner) {
 
     println!("Part ID: {:#X}", part_id);
 
-    loop {
+    loop {  
         
         let samples_read: u8 = sensor.read_fifo(&mut data).unwrap();
         for i in 0..samples_read {
@@ -55,5 +55,3 @@ async fn main(_spawner: Spawner) {
     }
 }
 
-
-// We see that 4 green cycle = 1 red, but in real life, RED LED always seem to drift a bit earlier???????

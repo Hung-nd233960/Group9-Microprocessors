@@ -61,10 +61,11 @@ fn main() -> ! {
                 }
             }
             Err(e) => {
-                esp_println::println!("Lỗi đọc dữ liệu: {:?}", e);
+                esp_println::println!("Error: {:?}", e);
             }
         }
 
         delay.delay(500.millis());
     }
 }
+
