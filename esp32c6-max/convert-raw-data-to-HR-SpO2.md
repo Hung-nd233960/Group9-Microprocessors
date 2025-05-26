@@ -297,3 +297,8 @@ loop {
 
 ## 9. Conclusion
 Converting raw PPG data to heart rate and SpO2 involves acquiring IR and Red signals, preprocessing with bandpass and Kalman filters, extracting DC components before filtering, detecting peaks for heart rate, and calculating the R ratio for SpO2. The bandpass filter removes the DC component, but this can be addressed by computing the DC from raw signals before filtering. The provided Rust code can be extended with peak detection and SpO2 calculation, ensuring accurate results in a `no_std` environment on the ESP32-C6.
+
+References : 
+https://www.ti.com/lit/an/slaa655/slaa655.pdf?ts=1748254022937&ref_url=https%253A%252F%252Fwww.google.com%252F
+https://www.quora.com/How-is-an-IR-sensor-able-to-detect-a-heart-beat
+
