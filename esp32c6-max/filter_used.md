@@ -261,3 +261,11 @@ if buffer_index == 0 {
 
 ## 5. Conclusion
 The bandpass filter isolates the PPG signal's relevant frequency range (0.5–5 Hz), while the Kalman filter smooths the signal to reduce residual noise, particularly from motion artifacts. Together, they produce a clean signal suitable for heart rate and SpO2 calculations. The implementation is optimized for the `no_std` environment, using static arrays and the `libm` crate to ensure compatibility with the ESP32-C6.
+
+
+References : 
+
+https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/band-pass-filters/#:~:text=A%20band%2Dpass%20filter%20works,reduce%20or%20diminish%20in%20amplitude.
+
+https://thekalmanfilter.com/kalman-filter-explained-simply/
+
