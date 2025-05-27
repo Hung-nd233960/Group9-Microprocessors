@@ -8,12 +8,46 @@ use esp_println::println;
 use esp_backtrace as _;
 use esp_hal::{clock::CpuClock, time::Rate};
 use max3010x::{Max3010x, Led, SampleAveraging};
-use libm::tanf; 
+use libm::tanf; // Thêm libm để hỗ trợ hàm tan trong no_std
 
+// Định nghĩa hằng số cho bộ lọc
 const SAMPLE_RATE: f32 = 100.0; // Tần số lấy mẫu (Hz), giả định 100 Hz
 const BUFFER_SIZE: usize = 100; // Kích thước bộ đệm cho dữ liệu IR
 
-// Hàm lọc tín hiệu: Chỉ sử dụng bandpass filter
+// Cấu trúc cho bộ lọc Kalman
+struct KalmanFilter {
+    x: f32, // Trạng thái (giá trị tín hiệu ước lượng)
+    p: f32, // Độ không chắc chắn của trạng thái
+    q: f32, // Nhiễu quá trình (process noise)
+    r: f32, // Nhiễu đo lường (measurement noise)
+}
+
+impl KalmanFilter {
+    // Khởi tạo bộ lọc Kalman
+    fn new() -> Self {
+        KalmanFilter {
+            x: 0.0, // Giá trị ban đầu
+            p: 1.0, // Độ không chắc chắn ban đầu
+            q: 0.01, // Nhiễu quá trình (điều chỉnh theo thực tế)
+            r: 0.1, // Nhiễu đo lường (điều chỉnh theo thực tế)
+        }
+    }
+
+    // Cập nhật bộ lọc Kalman với giá trị đo mới
+    fn update(&mut self, measurement: f32) -> f32 {
+        // Dự đoán
+        self.p = self.p + self.q;
+
+        // Cập nhật
+        let k = self.p / (self.p + self.r); // Kalman gain
+        self.x = self.x + k * (measurement - self.x); // Cập nhật trạng thái
+        self.p = (1.0 - k) * self.p; // Cập nhật độ không chắc chắn
+
+        self.x
+    }
+}
+
+// Hàm lọc tín hiệu: Bandpass filter + Kalman filter
 fn filter_signal(signal: &[f32; BUFFER_SIZE], lowcut: f32, highcut: f32, fs: f32) -> [f32; BUFFER_SIZE] {
     let mut filtered = [0.0; BUFFER_SIZE];
     let alpha = tanf(2.0 * 3.14159 * lowcut / fs);
@@ -26,7 +60,15 @@ fn filter_signal(signal: &[f32; BUFFER_SIZE], lowcut: f32, highcut: f32, fs: f32
             - beta * filtered[i - 1]
             + 0.1 * filtered[i - 2];
     }
-    filtered
+
+    // Áp dụng bộ lọc Kalman để làm mượt tín hiệu
+    let mut kalman = KalmanFilter::new();
+    let mut kalman_filtered = [0.0; BUFFER_SIZE];
+    for i in 0..filtered.len() {
+        kalman_filtered[i] = kalman.update(filtered[i]);
+    }
+
+    kalman_filtered
 }
 
 #[panic_handler]
@@ -73,7 +115,7 @@ async fn main(_spawner: Spawner) {
             ir_buffer[buffer_index % BUFFER_SIZE] = ir_value;
             buffer_index = (buffer_index + 1) % BUFFER_SIZE;
 
-            // In dữ liệu raw thô 
+            // In dữ liệu thô
             println!("Sample {}: {:?}", i, data[i as usize]);
 
             // Nếu bộ đệm đầy, áp dụng bộ lọc
