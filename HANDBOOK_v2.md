@@ -254,7 +254,7 @@ Your task is to:
 
 #### Conclusion
 
-More details is in the file [CommProtocol.md](Resources/Sensors.md)
+More details is in the file [CommProtocol.md](Resources/CommProtocol.md)
 
 # Phase 2: Design and Create
 
