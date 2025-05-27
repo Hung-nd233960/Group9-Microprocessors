@@ -1,0 +1,11 @@
+D:\Embedded_Rust\mycatmpu\target\riscv32imc-unknown-none-elf\release\deps\libmax3010x-08ed0f586e36280c.rmeta: C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\lib.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\common.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\max30102.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\reading.rs
+
+D:\Embedded_Rust\mycatmpu\target\riscv32imc-unknown-none-elf\release\deps\libmax3010x-08ed0f586e36280c.rlib: C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\lib.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\common.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\max30102.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\reading.rs
+
+D:\Embedded_Rust\mycatmpu\target\riscv32imc-unknown-none-elf\release\deps\max3010x-08ed0f586e36280c.d: C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\lib.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\common.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\max30102.rs C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\reading.rs
+
+C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\lib.rs:
+C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config.rs:
+C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\common.rs:
+C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\config\max30102.rs:
+C:\Users\Swift3\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\max3010x-0.2.0\src\reading.rs:
