@@ -1,0 +1,1 @@
+{"rustc":10895048813736897673,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[4214080862923401488,"build_script_build",false,9945412200770690160]],"local":[{"RerunIfEnvChanged":{"var":"ESP_LOG","val":"info"}}],"rustflags":["-C","force-frame-pointers"],"config":0,"compile_kind":0}

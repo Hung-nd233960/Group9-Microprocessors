@@ -1,0 +1,2 @@
+cargo:rustc-link-arg=--error-handling-script=D:\mybranch\Group9-Microprocessors\just-max\target\release\build\just-max-ccd327c8f823dbc0\build-script-build.exe
+cargo:rustc-link-arg=-Tlinkall.x
