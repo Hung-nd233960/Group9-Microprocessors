@@ -254,7 +254,7 @@ Your task is to:
 
 #### Conclusion
 
-More details is in the file [CommProtocol.md](CommProtocol.md)
+More details is in the file [CommProtocol.md](Resources/CommProtocol.md)
 
 # Phase 2: Design and Create
 
@@ -317,7 +317,7 @@ Also, a lab work investigating I2C signal with Ocilloscopes is being done.
 C testing for mpu6050 is provided folder test_C
 Rust testing code for max30102 and mpu6050 is in folder max30102
 
-More details is in the file [Sensors](Resources/Sensors), [Kalman](Resources/Kalman.md)
+More details is in the file [Sensors](Resources/Sensors.md), [Kalman](Resources/Kalman.md)
 
 ## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306  (DONE)
 

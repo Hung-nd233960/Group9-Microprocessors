@@ -1,0 +1,3 @@
+cargo:rustc-link-search=D:\Embedded_Rust\mycatmpu\target\riscv32imc-unknown-none-elf\release\build\esp32c3-22b5110a9c2b6a42\out
+cargo:rerun-if-changed=device.x
+cargo:rerun-if-changed=build.rs

@@ -1,0 +1,5 @@
+cargo:rustc-check-cfg=cfg(riscv)
+cargo:rustc-check-cfg=cfg(riscv32)
+cargo:rustc-check-cfg=cfg(riscv64)
+cargo:rustc-cfg=riscv
+cargo:rustc-cfg=riscv32

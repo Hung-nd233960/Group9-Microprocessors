@@ -1,0 +1,5 @@
+D:\Embedded_Rust\mycatmpu\target\debug\build\mycatmpu-d562ebf8102ed53d\build_script_build-d562ebf8102ed53d.exe: build.rs
+
+D:\Embedded_Rust\mycatmpu\target\debug\build\mycatmpu-d562ebf8102ed53d\build_script_build-d562ebf8102ed53d.d: build.rs
+
+build.rs:

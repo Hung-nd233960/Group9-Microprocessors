@@ -1,0 +1,8 @@
+
+[0m[1m[33m
+WARNING[0m[33m: use --release
+[0m[33m  We *strongly* recommend using release profile when building esp-hal.
+[0m[33m  The dev profile can potentially be one or more orders of magnitude
+[0m[33m  slower than release, and may cause issues with timing-senstive
+[0m[33m  peripherals and/or devices.
+[0m
