@@ -69,7 +69,6 @@ The idea is: keep checking `Instant::now()` in a loop or task — and toggle the
 
 <video src="../Demo-video/version-1-beta-4-video/ssd1306-deep-sleep.mp4" width="480" height="320" controls></video>
 
-
 * Starts ON
 * After 5 seconds → OFF
 * Then every 5 seconds → toggles ON/OFF
