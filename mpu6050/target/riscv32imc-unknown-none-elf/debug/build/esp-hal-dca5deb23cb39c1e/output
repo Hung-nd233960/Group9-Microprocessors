@@ -504,8 +504,8 @@ cargo:rerun-if-changed=build.rs
 cargo:rerun-if-changed=C:\Users\Duy\Documents\Group9-Microprocessors\mpu6050\.cargo/config.toml
 cargo:rerun-if-env-changed=ESP_HAL_PLACE_SPI_DRIVER_IN_RAM
 cargo:rerun-if-env-changed=ESP_HAL_SPI_ADDRESS_WORKAROUND
+cargo:rustc-check-cfg=cfg(place_spi_driver_in_ram)
+cargo:rustc-env=ESP_HAL_PLACE_SPI_DRIVER_IN_RAM=false
 cargo:rustc-check-cfg=cfg(spi_address_workaround)
 cargo:rustc-cfg=spi_address_workaround
 cargo:rustc-env=ESP_HAL_SPI_ADDRESS_WORKAROUND=true
-cargo:rustc-check-cfg=cfg(place_spi_driver_in_ram)
-cargo:rustc-env=ESP_HAL_PLACE_SPI_DRIVER_IN_RAM=false
