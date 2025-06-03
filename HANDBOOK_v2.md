@@ -319,6 +319,10 @@ Rust testing code for max30102 and mpu6050 is in folder max30102
 
 More details is in the file [Sensors](Resources/Sensors.md), [Kalman](Resources/Kalman.md)
 
+How do we convert raw data from sensors to HR and SpO2 ? Check this [HR-SPO2](Resources/convert-raw-data-to-HR-SpO2.md)
+
+How we filter the signal ? Check this [Filter](Resources/filter_used.md)
+
 ## Week 10: Components: ESP32-C3, ESP32-C6, SSD1306  (DONE)
 
 ### Date: May 05, 2025
