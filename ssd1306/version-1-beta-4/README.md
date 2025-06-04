@@ -1,4 +1,4 @@
-# Integrating deep sleep mode to SSD1306 display
+# Turn on/off SSD1306 display
 After reasearching the `ssd1306` crate, i found that there is a function called:
 ```rust
 set_display_on(&mut self, on: bool)
