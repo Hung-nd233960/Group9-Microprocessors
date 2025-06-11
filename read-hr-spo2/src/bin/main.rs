@@ -176,8 +176,8 @@ async fn main(_spawner: Spawner) {
     loop {
         let samples_read: u8 = sensor.read_fifo(&mut data).unwrap();
         for i in 0..samples_read {
-            // Giả định: IR ở 16 bit cao, Red ở 16 bit thấp
-            let ir_value = ((data[i as usize] >> 16) & 0xFFFF) as f32;
+            // Giả định: IR ở 24 bit cao, Red ở 24 bit thấp
+            let ir_value = ((data[i as usize] >> 24) & 0xFFFF) as f32;
             let red_value = (data[i as usize] & 0xFFFF) as f32;
             ir_buffer[buffer_index % BUFFER_SIZE] = ir_value;
             red_buffer[buffer_index % BUFFER_SIZE] = red_value;
