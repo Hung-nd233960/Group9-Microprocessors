@@ -802,6 +802,7 @@ dependencies = [
  "critical-section",
  "embassy-executor",
  "embassy-time",
+ "embedded-hal-async",
  "esp-alloc",
  "esp-backtrace",
  "esp-hal",

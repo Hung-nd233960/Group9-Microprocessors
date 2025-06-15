@@ -19,6 +19,7 @@ esp-println      = { version = "0.13.1", features = ["esp32c6"] }
 esp-backtrace    = { version = "0.15.1", features = ["esp32c6", "println"]}
 max3010x         = "0.2.0" 
 libm = "0.2.15"
+embedded-hal-async = "1.0.0"
 
 [profile.dev]
 # Rust debug is too slow.

@@ -37,8 +37,8 @@ fn main() -> ! {
 
     let i2c = I2c::new(
         peripherals.I2C0,
-        io.pins.gpio8, // SDA
-        io.pins.gpio9, // SCL
+        io.pins.gpio6, // SDA 
+        io.pins.gpio7, // SCL 
         400_u32.kHz(),
     );
     let timer0 = SystemTimer::new(peripherals.SYSTIMER);
@@ -61,7 +61,7 @@ fn main() -> ! {
                 }
             }
             Err(e) => {
-                esp_println::println!("Lỗi đọc dữ liệu: {:?}", e);
+                esp_println::println!("Error: {:?}", e);
             }
         }
 
