@@ -12,7 +12,7 @@ use libm::tanf;
 
 const SAMPLE_RATE: f32 = 100.0; // Tần số lấy mẫu (Hz)
 const BUFFER_SIZE: usize = 100; // Kích thước bộ đệm
-const THRESHOLD: f32 = 0.5; // Ngưỡng phát hiện đỉnh 
+const THRESHOLD: f32 = 0.05; // Ngưỡng phát hiện đỉnh 
 
 // Hàm lọc tín hiệu: Bandpass filter
 fn filter_signal(signal: &[f32; BUFFER_SIZE], lowcut: f32, highcut: f32, fs: f32) -> [f32; BUFFER_SIZE] {
@@ -79,6 +79,11 @@ fn detect_peaks(signal: &[f32; BUFFER_SIZE], threshold: f32) -> ([usize; BUFFER_
 
 // Hàm tính nhịp tim (BPM)
 fn calculate_bpm(peaks: &[usize; BUFFER_SIZE], peak_count: usize) -> f32 {
+    for i in 1..peak_count {
+    let interval = (peaks[i] - peaks[i - 1]) as f32 / SAMPLE_RATE;
+    println!("Interval between peaks {} and {}: {:.2}s", peaks[i-1], peaks[i], interval);
+}
+
     if peak_count < 2 {
         return 0.0; // Không đủ đỉnh để tính
     }
@@ -95,7 +100,10 @@ fn calculate_bpm(peaks: &[usize; BUFFER_SIZE], peak_count: usize) -> f32 {
         return 0.0;
     }
     60.0 / (intervals / valid_intervals as f32) // BPM = 60 / trung bình khoảng cách
+    
+
 }
+
 
 // Hàm tính SpO2
 fn calculate_spo2(ir_signal: &[f32; BUFFER_SIZE], red_signal: &[f32; BUFFER_SIZE],
@@ -162,8 +170,10 @@ async fn main(_spawner: Spawner) {
     sensor.set_sample_averaging(SampleAveraging::Sa4).unwrap();
     sensor.set_pulse_amplitude(Led::Led1, 0x1F).unwrap(); // IR LED
     sensor.set_pulse_amplitude(Led::Led2, 0x1F).unwrap(); // Red LED
+    sensor.set_pulse_width(max3010x::LedPulseWidth::Pw411).unwrap();
     sensor.enable_fifo_rollover().unwrap();
-    let mut data = [0; 3];
+    sensor.set_sampling_rate(max3010x::SamplingRate::Sps100).unwrap();
+    let mut data = [0; BUFFER_SIZE];
     let part_id = sensor.get_part_id().unwrap();
 
     println!("Part ID: {:#X}", part_id);
@@ -176,38 +186,48 @@ async fn main(_spawner: Spawner) {
     loop {
         let samples_read: u8 = sensor.read_fifo(&mut data).unwrap();
         for i in 0..samples_read {
+            // MAX30102 trong SpO2 mode trả về dữ liệu 32-bit
+            // Bits 31-18: IR data (18-bit)
+            // Bits 17-0: Red data (18-bit)
+            let raw_data = data[i as usize];
+            
+            // Debug: In raw data
+            println!("Raw FIFO data: {:#010X}", raw_data); 
             // Giả định: IR ở 16 bit cao, Red ở 16 bit thấp
-            let ir_value = ((data[i as usize] >> 16) & 0xFFFF) as f32;
-            let red_value = (data[i as usize] & 0xFFFF) as f32;
+            let red_value = ((raw_data >> 18) & 0x3FFFF) as f32;  // Red from upper bits  
+            let ir_value = (raw_data & 0x3FFFF) as f32;           // IR from lower bits
             ir_buffer[buffer_index % BUFFER_SIZE] = ir_value;
             red_buffer[buffer_index % BUFFER_SIZE] = red_value;
             buffer_index = (buffer_index + 1) % BUFFER_SIZE;
-
-            // In dữ liệu thô
-            println!("Sample {}: IR={:.2}, Red={:.2}", i, ir_value, red_value);
-
-            // Nếu bộ đệm đầy, xử lý tín hiệu
-            if buffer_index == 0 {
-                // Lọc tín hiệu IR và Red
-                let ir_filtered = filter_signal(&ir_buffer, 0.5, 5.0, SAMPLE_RATE);
-                let red_filtered = filter_signal(&red_buffer, 0.5, 5.0, SAMPLE_RATE);
-
-                // In tín hiệu đã lọc
-                for (j, &value) in ir_filtered.iter().enumerate() {
-                    println!("Filtered IR Sample {}: {:.2}", j, value);
-                }
-
-                // Tính nhịp tim
-                let (peaks, peak_count) = detect_peaks(&ir_filtered, THRESHOLD);
-                let bpm = calculate_bpm(&peaks, peak_count);
-                println!("Heart Rate: {:.2} BPM", bpm);
-
-                // Tính SpO2
-                let spo2 = calculate_spo2(&ir_buffer, &red_buffer, &ir_filtered, &red_filtered);
-                println!("SpO2: {:.2}%", spo2);
-            }
+            //println!("Sample {}: IR={:.2}, Red={:.2}", i, ir_value, red_value);
         }
+            // In dữ liệu thô
+            
+            
+            // Nếu bộ đệm đầy, xử lý tín hiệu
+        if buffer_index == 0 {
+            // Lọc tín hiệu IR và Red
+            let ir_filtered = filter_signal(&ir_buffer, 0.5, 5.0, SAMPLE_RATE);
+            let red_filtered = filter_signal(&red_buffer, 0.5, 5.0, SAMPLE_RATE);
 
-        Timer::after(Duration::from_millis(1000)).await;
+            // In tín hiệu đã lọc
+            for (j, &value) in ir_filtered.iter().enumerate() {
+                println!("Filtered IR Sample {}: {:.2}", j, value);
+            }
+
+            // Tính nhịp tim
+            let (peaks, peak_count) = detect_peaks(&ir_filtered, THRESHOLD);
+            println!("Peak Count: {}", peak_count);
+            println!("Peak Indices: {:?}", &peaks[..peak_count]);
+            let bpm = calculate_bpm(&peaks, peak_count);
+            println!("Heart Rate: {:.2} BPM", bpm);
+
+            // Tính SpO2
+            let spo2 = calculate_spo2(&ir_buffer, &red_buffer, &ir_filtered, &red_filtered);
+            println!("SpO2: {:.2}%", spo2);
+        }
     }
-}
+
+        // Đợi một khoảng thời gian trước khi lấy mẫu tiếp theo
+        Timer::after(Duration::from_millis(1000 / SAMPLE_RATE as u64)).await;
+    }

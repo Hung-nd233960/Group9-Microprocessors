@@ -452,8 +452,6 @@ Next steps will involve:
 - Please include images on testing and adding code
 - Report on MAX30102 lacking byte address and byte code for each command.
 
-#### b. Preparation
-
 #### c. Conclusion
 
 ## Week 13: Assemble Together 3. Report 2. Testing 2
@@ -461,11 +459,19 @@ Next steps will involve:
 
 #### a. Packaging
 
+- Design a packaging that is consist of three part: sensors, MCU and screen. Please note out the mechanical design approach and parts, materials used.
 #### b. Toolchain
 
-#### c. Slides
+- Design a testing kit for validation of the system: Ideas, technical basis, tool used and development.
+#### c. Conclusion
 
-#### d. Conclusion
+- We have made ideas for a MAX30102 emulator - act as a I2C slave that can make mock data to test I2C connection, data. Due to Hung destroyed all available MCUs, the verification cannot be done.
+
+DUE TO THUONG'S limitation on processing PPG data, system now focus on HR only.
+
+Details on testing toolchain is [Testing_Kit](Resources/Test_Kit.md)
+)
+
 ## Week 14: Report 3 and Conclusion
 
 ### Date: Jun 02, 2025
