@@ -93,11 +93,13 @@ async fn main(_spawner: Spawner) {
     .into_async();
 
     let max3010x = Max3010x::new_max30102(i2c);
-    let mut sensor = max3010x.into_oximeter().unwrap();
+    let mut sensor = max3010x.into_heart_rate().unwrap();
 
     sensor.set_sample_averaging(SampleAveraging::Sa4).unwrap();
     sensor.set_pulse_amplitude(Led::Led1, 0x24).unwrap();
     sensor.set_pulse_amplitude(Led::Led2, 0x00).unwrap();
+    sensor.set_pulse_width(max3010x::LedPulseWidth::Pw69).unwrap();
+    sensor.set_sampling_rate(max3010x::SamplingRate::Sps400).unwrap();
     sensor.enable_fifo_rollover().unwrap();
 
     let mut data = [0; 3];
@@ -106,8 +108,9 @@ async fn main(_spawner: Spawner) {
 
     loop {
         let samples = sensor.read_fifo(&mut data).unwrap();
+        
         for i in 0..samples {
-            let ir = (data[i as usize] & 0x3FFFF) as f32;
+            let ir = ((data[i as usize]) as f32 )/2.0;
             ir_buffer[index] = ir;
             println!("Sample {}: IR={:.2}", index, ir);
             index += 1;
