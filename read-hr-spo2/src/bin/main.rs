@@ -165,69 +165,33 @@ async fn main(_spawner: Spawner) {
         .unwrap().with_scl(peripherals.GPIO7).with_sda(peripherals.GPIO6).into_async();
 
     let max3010x = Max3010x::new_max30102(i2c_bus);
-    let mut sensor = max3010x.into_oximeter().unwrap();
 
-    sensor.set_sample_averaging(SampleAveraging::Sa4).unwrap();
-    sensor.set_pulse_amplitude(Led::Led1, 0x1F).unwrap(); // IR LED
-    sensor.set_pulse_amplitude(Led::Led2, 0x1F).unwrap(); // Red LED
-    sensor.set_pulse_width(max3010x::LedPulseWidth::Pw411).unwrap();
+
+    let mut sensor = max3010x.into_heart_rate().unwrap();
+    sensor.set_pulse_width(max3010x::LedPulseWidth::Pw69).unwrap();
+    sensor.set_sample_averaging(SampleAveraging::Sa1).unwrap();
+    sensor.set_pulse_amplitude(Led::Led2, 0x1F).unwrap(); // IR LED
     sensor.enable_fifo_rollover().unwrap();
     sensor.set_sampling_rate(max3010x::SamplingRate::Sps100).unwrap();
-    let mut data = [0; BUFFER_SIZE];
+    
+    let mut data = [0; 3];
     let part_id = sensor.get_part_id().unwrap();
 
     println!("Part ID: {:#X}", part_id);
 
     // Bộ đệm cho IR và Red
-    let mut ir_buffer = [0.0; BUFFER_SIZE];
+
     let mut red_buffer = [0.0; BUFFER_SIZE];
     let mut buffer_index = 0;
-
     loop {
         let samples_read: u8 = sensor.read_fifo(&mut data).unwrap();
+        println!("Samples read: {}", samples_read);
         for i in 0..samples_read {
-            // MAX30102 trong SpO2 mode trả về dữ liệu 32-bit
-            // Bits 31-18: IR data (18-bit)
-            // Bits 17-0: Red data (18-bit)
-            let raw_data = data[i as usize];
-            
-            // Debug: In raw data
-            println!("Raw FIFO data: {:#010X}", raw_data); 
-            // Giả định: IR ở 16 bit cao, Red ở 16 bit thấp
-            let red_value = ((raw_data >> 18) & 0x3FFFF) as f32;  // Red from upper bits  
-            let ir_value = (raw_data & 0x3FFFF) as f32;           // IR from lower bits
-            ir_buffer[buffer_index % BUFFER_SIZE] = ir_value;
-            red_buffer[buffer_index % BUFFER_SIZE] = red_value;
-            buffer_index = (buffer_index + 1) % BUFFER_SIZE;
-            //println!("Sample {}: IR={:.2}, Red={:.2}", i, ir_value, red_value);
-        }
-            // In dữ liệu thô
-            
-            
-            // Nếu bộ đệm đầy, xử lý tín hiệu
-        if buffer_index == 0 {
-            // Lọc tín hiệu IR và Red
-            let ir_filtered = filter_signal(&ir_buffer, 0.5, 5.0, SAMPLE_RATE);
-            let red_filtered = filter_signal(&red_buffer, 0.5, 5.0, SAMPLE_RATE);
-
-            // In tín hiệu đã lọc
-            for (j, &value) in ir_filtered.iter().enumerate() {
-                println!("Filtered IR Sample {}: {:.2}", j, value);
-            }
-
-            // Tính nhịp tim
-            let (peaks, peak_count) = detect_peaks(&ir_filtered, THRESHOLD);
-            println!("Peak Count: {}", peak_count);
-            println!("Peak Indices: {:?}", &peaks[..peak_count]);
-            let bpm = calculate_bpm(&peaks, peak_count);
-            println!("Heart Rate: {:.2} BPM", bpm);
-
-            // Tính SpO2
-            let spo2 = calculate_spo2(&ir_buffer, &red_buffer, &ir_filtered, &red_filtered);
-            println!("SpO2: {:.2}%", spo2);
-        }
+            let sample = data[i as usize] >> 3; // 24 - 15 = 9
+            println!("Corrected sample = {}", sample);
     }
 
         // Đợi một khoảng thời gian trước khi lấy mẫu tiếp theo
         Timer::after(Duration::from_millis(1000 / SAMPLE_RATE as u64)).await;
     }
+}

@@ -41,7 +41,7 @@ If you want to view images or any local content referenced in the handbook, make
 
 
 # Phase 1: Preparation 
-## Week 1: Team-Forming, Workflow and Topic (NOT WORKING YET)
+## Week 1: Team-Forming, Workflow and Topic 
 
 ### Date: Mar 03, 2025
 
