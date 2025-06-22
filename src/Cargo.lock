@@ -939,6 +939,7 @@ dependencies = [
  "heapless",
  "libm",
  "max3010x",
+ "micromath",
  "shared-bus",
  "ssd1306",
  "static_cell",

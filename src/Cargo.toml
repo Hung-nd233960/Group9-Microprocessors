@@ -24,6 +24,7 @@ heapless = "0.8.0"
 ssd1306 = {version = "0.10.0", features = ["async"]}
 embedded-graphics = "0.8.1"
 shared-bus = "0.3.1"
+micromath = "2.1.0"
 
 [profile.dev]
 # Rust debug is too slow.
