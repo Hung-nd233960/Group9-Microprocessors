@@ -31,3 +31,5 @@ Hùng : Tui đánh giá ở trên rồi
 
 
 Tất cả đều tham gia viết handbook . Không đánh giá 
+
+Chốt đóng góp : Mỗi người 33.33% .
