@@ -1,0 +1,1 @@
+D:\mybranch\Group9-Microprocessors\just-max\target\riscv32imc-unknown-none-elf\release\libjust_max.rlib: D:\mybranch\Group9-Microprocessors\just-max\build.rs D:\mybranch\Group9-Microprocessors\just-max\src\lib.rs

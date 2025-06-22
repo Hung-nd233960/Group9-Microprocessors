@@ -1,0 +1,35 @@
+[package]
+edition = "2021"
+name    = "test"
+version = "0.1.0"
+
+[[bin]]
+name = "test"
+path = "./src/bin/main.rs"
+
+[dependencies]
+critical-section = "1.2.0"
+embassy-executor = { version = "0.7.0", features = ["task-arena-size-20480"] }
+embassy-time     = { version = "0.4.0", features = ["generic-queue-8"] }
+esp-hal          = { version = "1.0.0-beta.0", features = ["esp32c3", "unstable"] }
+esp-hal-embassy  = { version = "0.7.0", features = ["esp32c3"] }
+ssd1306 = {version = "0.10.0", features = ["async"]}
+embedded-graphics = "0.8.1"
+static_cell      = { version = "2.1.0", features = ["nightly"] }
+heapless = "0.8.0"
+libm = "0.2.15"
+nb = "1.1.0"
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimization
+opt-level = "s"
+
+[profile.release]
+codegen-units    = 1     # LLVM can perform better optimizations using a single thread
+debug            = 2
+debug-assertions = false
+incremental      = false
+lto              = 'fat'
+opt-level        = 's'
+overflow-checks  = false

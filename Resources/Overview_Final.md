@@ -1,0 +1,2 @@
+In this project, our ideas for the Microprocessors project is OxyRem, a portable HR and SpO2 measure device operated in Rust. In this project, our tasks focus on three tasks: First. Learn Rust, Embedded Rust and the foundational knowledge of microprocessors and communication protocols. Second, we design a hardware prototype of the device using ESP32-C6, SS1306 OLED screen and MAX30102 sensors. Third. we made an emulation for the MAX30102 based on our understanding of the sensor and its behaviour.
+
